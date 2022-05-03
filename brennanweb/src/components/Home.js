@@ -52,48 +52,50 @@ const Home = () => {
         <div className="flex-1 flex overflow-hidden">
           <div className="flex-1 overflow-y-scroll">
             <div className="flex-grow border-t border-gray-400 mt-10"></div>
-            {data.posts.map((post) => {
-              const date = String(new Date(post.createdAt));
-              return (
-                <div
-                  key={post.id}
-                  className="ml-24 wrapper p-5 w-96 antialiased text-gray-900"
-                >
-                  <img
-                    src={post.image}
-                    alt=" random imgee"
-                    className="w-96 h-56 object-cover object-center rounded-lg shadow-md shadow-2xl shadow-black "
-                  />
-                  <div className="relative px-4 -mt-12 ">
-                    <div className="bg-base-200 p-6 rounded-lg shadow-lg w-84 shadow-2xl shadow-black ">
-                      <div className="flex items-baseline"></div>
+            {data.posts
+              ? data.posts.map((post) => {
+                  const date = String(new Date(post.createdAt));
+                  return (
+                    <div
+                      key={post.id}
+                      className="ml-24 wrapper p-5 w-96 antialiased text-gray-900"
+                    >
+                      <img
+                        src={post.image}
+                        alt=" random imgee"
+                        className="w-96 h-56 object-cover object-center rounded-lg shadow-md shadow-2xl shadow-black "
+                      />
+                      <div className="relative px-4 -mt-12 ">
+                        <div className="bg-base-200 p-6 rounded-lg shadow-lg w-84 shadow-2xl shadow-black ">
+                          <div className="flex items-baseline"></div>
 
-                      <h4 className="mt-1 text-xl font-semibold uppercase text-white leading-tight truncate">
-                        {post.title}
-                      </h4>
+                          <h4 className="mt-1 text-xl font-semibold uppercase text-white leading-tight truncate">
+                            {post.title}
+                          </h4>
 
-                      <div className="mt-1">
-                        <span className="text-white text-sm line-clamp-3">
-                          {post.content}
-                        </span>
-                      </div>
+                          <div className="mt-1">
+                            <span className="text-white text-sm line-clamp-3">
+                              {post.content}
+                            </span>
+                          </div>
 
-                      <div>
-                        <p className="text-white">{date.slice(0, 16)}</p>
-                      </div>
-                      <div className="mt-4">
-                        <Button
-                          className="btn btn-primary"
-                          onClick={() => navigate(`/blog/${post.id}`)}
-                        >
-                          Read more...
-                        </Button>
+                          <div>
+                            <p className="text-white">{date.slice(0, 16)}</p>
+                          </div>
+                          <div className="mt-4">
+                            <Button
+                              className="btn btn-primary"
+                              onClick={() => navigate(`/blog/${post.id}`)}
+                            >
+                              Read more...
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })
+              : 'nothing'}
           </div>
         </div>
       </div>
