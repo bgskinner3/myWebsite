@@ -52,7 +52,7 @@ const Home = () => {
         <div className="flex-1 flex overflow-hidden">
           <div className="flex-1 overflow-y-scroll">
             <div className="flex-grow border-t border-gray-400 mt-10"></div>
-            {data.posts
+            {data
               ? data.posts.map((post) => {
                   const date = String(new Date(post.createdAt));
                   return (
