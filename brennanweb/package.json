@@ -48,6 +48,7 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
+    "heroku-prebuild": "npm install -g serve",
     "start": "react-scripts start & npm run start:server",
     "build": "react-scripts build",
     "test": "react-scripts test",
