@@ -58,6 +58,7 @@ const httpLink = createUploadLink({
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers }) => {
     const token = localStorage.getItem(jwtAuth);
+    console.log('headers???', headers)
     return {
       headers: {
         ...headers,
@@ -65,6 +66,8 @@ const authLink = new ApolloLink((operation, forward) => {
       },
     };
   });
+  console.log('forward,', forward)
+  console.log('operation', operation)
   return forward(operation);
 });
 
