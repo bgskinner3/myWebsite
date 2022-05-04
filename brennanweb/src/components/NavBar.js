@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 const token = process.env.REACT_APP_JWT_SECRET;
 
 const NavBar = () => {
@@ -8,7 +9,9 @@ const NavBar = () => {
   return (
     <header className="sticky top-0 p-5 flex justify-between items-center bg-white p-5 shadow-md md:px-10 z-40 ">
       <Link to="/">
-        <h1 className="text-bold text-lg md:text-2xl">Home</h1>
+        <h1 className="text-bold italic font-sans text-lg md:text-2xl">
+          <HomeIcon sx={{ fontSize: 50 }} />
+        </h1>
       </Link>
 
       {admin ? (

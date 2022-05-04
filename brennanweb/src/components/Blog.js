@@ -92,7 +92,7 @@ const Blog = () => {
       <div className="bg-fixed h-full bg-cover bg-center flex grid grid-cols-1 content-center ">
         {/* <img src={nycskylinetrain} alt="" className="bg-scroll"/> */}
 
-        {data.posts
+        {data
           ? data.posts.map((post) => {
               const date = String(new Date(post.createdAt));
               return (

@@ -5,5 +5,15 @@ import AdminLogin from './AdminLogin';
 import CreateBlogPost from './CreateBlogPost';
 import Footer from './Footer';
 import SingleBlog from './SingleBlog';
+import Projects from './Projects';
 
-export { Home, NavBar, Blog, AdminLogin, CreateBlogPost, Footer, SingleBlog };
+export {
+  Home,
+  NavBar,
+  Blog,
+  AdminLogin,
+  CreateBlogPost,
+  Footer,
+  SingleBlog,
+  Projects,
+};
