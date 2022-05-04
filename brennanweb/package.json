@@ -48,9 +48,9 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "heroku-prebuild": "npm install -g serve & npm run seed",
+    "heroku-prebuild": "npm install -g serve",
     "start": "react-scripts start & npm run start:server",
-    "build": "react-scripts build",
+    "build": "react-scripts build & mv build ./public",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "seed": "node seed.js",
@@ -77,5 +77,6 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "tailwindcss": "^3.0.24"
-  }
+  },
+  "proxy":"http://localhost:4000"
 }

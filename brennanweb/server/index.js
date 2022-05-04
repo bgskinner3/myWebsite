@@ -7,12 +7,17 @@ const jwt = require('jsonwebtoken');
 const { graphqlUploadExpress } = require('graphql-upload');
 const port = process.env.PORT || 4000;
 const cors = require('cors');
+const path = require('path')
+
+
 require('dotenv').config();
+
 
 const getUser = async (token) => {
   try {
     if (token) {
       const { id } = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
+      console.log(id)
       const user = await User.findOne({
         where: {
           id: id
@@ -26,7 +31,7 @@ const getUser = async (token) => {
     return null;
   }
 };
-console.log('port', port)
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -37,7 +42,7 @@ const server = new ApolloServer({
     
     if (token && token.length) {
       const user = await getUser(token.replace('Bearer ', ''));
-      console.log(user);
+      
       return { user };
     } else {
       return {};
@@ -55,16 +60,21 @@ const errorHandler = (err, req, res, next) => {
   res.status(status).json(err);
 };
 console.log('error handler server', errorHandler);
-app.use(errorHandler);
+
 
 const startServer = async () => {
   await db.sync();
   await server.start();
   app.use(graphqlUploadExpress());
   app.use(cors());
+  app.use(errorHandler);
+  
 
   server.applyMiddleware({ app });
-  app.use(express.static('../../../public'));
+  app.use(express.static('../public'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  });
   app.listen(port, () => {
     console.log(`🚀 Server ready at http://localhost:4000`);
   });
