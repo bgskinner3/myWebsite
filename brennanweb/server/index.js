@@ -34,6 +34,7 @@ const server = new ApolloServer({
     
     const token = req.get('Authorization') || '';
 
+    console.log('got request', req)
     if (token && token.length) {
       const user = await getUser(token.replace('Bearer ', ''));
       console.log(user);
