@@ -68,6 +68,7 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
+console.log('authenticationlink', authLink)
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
