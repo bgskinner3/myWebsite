@@ -50,7 +50,7 @@
   "scripts": {
     "heroku-prebuild": "npm install -g serve",
     "start": "react-scripts start & npm run start:server",
-    "build": "react-scripts build & mv build ./public",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "seed": "node seed.js",
