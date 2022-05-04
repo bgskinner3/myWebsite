@@ -37,20 +37,20 @@ import {
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
-const customFetch = (uri, options) => {
-  return fetch(uri, options).then((response) => {
-    if (response.status >= 500) {
-      // or handle 400 errors
-      return Promise.reject(response.status);
-    }
-    return response;
-  });
+const customFetch = async (uri, options) => {
+  const response = await fetch(uri, options);
+  if (response.status >= 500) {
+    // or handle 400 errors
+    return Promise.reject(response.status);
+  }
+  console.log('caught error', response)
+  return response;
 };
 
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: 'https://brennanskinner.herokuapp.com/graphql',
-  fetch: customFetch
+  fetch: customFetch,
 });
 //for heroku build 
 //http://localhost:4000/graphql
