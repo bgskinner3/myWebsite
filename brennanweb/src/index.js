@@ -62,7 +62,7 @@ const authLink = new ApolloLink((operation, forward) => {
     return {
       headers: {
         ...headers,
-        accept: 'application/json',
+        Accept: 'application/json',
         Authorization: token ? `Bearer ${localStorage.getItem(jwtAuth)}` : '', // however you get your token
       },
     };

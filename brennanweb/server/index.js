@@ -45,7 +45,17 @@ const server = new ApolloServer({
   },
 });
 
+
 const app = express();
+const errorHandler = (err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  const { status } = err;
+  res.status(status).json(err);
+};
+console.log('error handler server', errorHandler);
+app.use(errorHandler);
 
 const startServer = async () => {
   await db.sync();
