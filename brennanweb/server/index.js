@@ -59,7 +59,6 @@ const errorHandler = (err, req, res, next) => {
   const { status } = err;
   res.status(status).json(err);
 };
-console.log('error handler server', errorHandler);
 
 
 const startServer = async () => {
@@ -71,7 +70,7 @@ const startServer = async () => {
   
 
   server.applyMiddleware({ app });
-  app.use(express.static('../public'));
+  app.use(express.static('public'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
   });
