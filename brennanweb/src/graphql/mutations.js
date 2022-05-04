@@ -26,9 +26,11 @@ export const CREATE_POST_MUTATION = gql`
 export const UPDATE_POST_MUTATION = gql`
   mutation updatePost($input: UpdatePostInput!) {
     updatePost(input: $input) {
+      id
       content
       title
       image
+      subject
     }
   }
 `;

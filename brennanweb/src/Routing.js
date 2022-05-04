@@ -12,7 +12,9 @@ import {
   CreateBlogPost,
   Footer,
   SingleBlog,
-  Projects
+  Projects,
+  EditBlogPost
+  
 } from './components';
 
 
@@ -28,6 +30,7 @@ const Routing = () => {
           <Route exact path ="/projects" element={<Projects />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blog/:id" element={<SingleBlog />} />
+          <Route exact path="blog/:id/edit" element={<EditBlogPost />} />
         </Routes>
       </main>
       <Footer />

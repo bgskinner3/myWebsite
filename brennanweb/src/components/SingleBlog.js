@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_SINGLE_BLOG_POST } from '../graphql/queries';
 import Loading from './Loading';
+
 const SingleBlog = () => {
   const [getDate, setDate] = useState('');
   const [getReadingTime, setReadingTime] = useState('');
@@ -12,6 +13,9 @@ const SingleBlog = () => {
       postId: id,
     },
   });
+  
+
+
   useEffect(() => {
     readingTime();
     getPostDate();
@@ -45,18 +49,24 @@ const SingleBlog = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div className="m-10">
-      <div className="m-20">
-        <img src={data.post.image} alt="" className="w-full rounded" />
-        <div className="flex items-stretch gap-x-4">
-          <h1 className=" text-3xl font-serif">{data.post.title}</h1>
-          <p className="">{getDate}</p>
-          <p className="italic">{getReadingTime}</p>
+    <div className="bg-white">
+      <div>
+        <div className="p-24">
+          <img src={data.post.image} alt="" className="w-full rounded" />
+        </div>
+        <div className="flex pl-24 items-stretch gap-x-4 pb-10">
+          <h1 className=" text-3xl font-serif underline text-black">
+            {data.post.title}
+          </h1>
+          <div className='flex mt-3 '>
+            <p className="mr-5">{getDate}</p>
+            <p className="italic">{getReadingTime}</p>
+          </div>
         </div>
       </div>
 
-      <div className="text-left">
-        <article className="prose text-xl font-serif prose-slate max-w whitespace-pre-line indent-8">
+      <div className="text-left pb-20 pl-24">
+        <article className="prose text-xl text-black font-serif prose-slate max-w whitespace-pre-line indent-8">
           {data.post.content}
         </article>
       </div>

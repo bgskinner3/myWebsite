@@ -35,8 +35,11 @@ const typeDefs = gql`
     profileImg: String
   }
   input UpdatePostInput {
-    newtitle: String!
-    newdescription: String!
+    id: ID!
+    title: String
+    content: String
+    image: String
+    subject: String
   }
   input CreatePostInput {
     title: String!

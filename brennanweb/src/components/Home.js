@@ -39,7 +39,7 @@ getRecent()
             Welcome,
           </p>
         </div>
-        <div className="absolute flex inset-y-96 ml-96 sm:ml-[350px] md:ml-[400px] lg:ml-[750px]">
+        <div className="absolute flex inset-y-96 ml-96 sm:ml-[300px] md:ml-[500px] lg:ml-[700px] xl:ml-[900px]">
           <button
             type="button"
             className="btn btn-active w-36 m-5"
@@ -105,7 +105,7 @@ getRecent()
             </div>
 
             <div className="flex-grow border-t border-black mt-10"></div>
-            <div className="flex items-center justify-center">
+            <div className="grid items-center justify-center">
               {data
                 ? data.posts.map((post) => {
                     const date = String(new Date(post.createdAt));

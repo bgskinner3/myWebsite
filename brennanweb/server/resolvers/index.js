@@ -89,13 +89,16 @@ const resolvers = {
       await post.destroy();
     },
     updatePost: async (parent, args) => {
-      const { id, newcontent, newtitle } = args.input;
+      const { id, content, title, image, subject } = args.input;
 
       const post = await Post.findByPk(id);
 
       post.set({
-        title: newtitle || post.title,
-        description: newcontent || post.content,
+        title: title || post.title,
+        content: content || post.content,
+        image: image || post.image,
+        subject: subject || post.subject
+
       });
       await post.save();
       return post;

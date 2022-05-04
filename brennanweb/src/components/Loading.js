@@ -2,7 +2,7 @@ import React from 'react';
 
 const Loading = () => {
   return (
-    <div className="flex justify-center items-center mt-36 ">
+    <div className="flex h-screen justify-center items-center mt-36 ">
       <div className="justify-center items-center">
         <svg className="ml-6 animate-bounce w-16 h-16 text-netural ...">
           <svg

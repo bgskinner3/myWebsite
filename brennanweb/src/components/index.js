@@ -6,6 +6,7 @@ import CreateBlogPost from './CreateBlogPost';
 import Footer from './Footer';
 import SingleBlog from './SingleBlog';
 import Projects from './Projects';
+import EditBlogPost from './EditBlogPost';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   Footer,
   SingleBlog,
   Projects,
+  EditBlogPost
 };
