@@ -26,7 +26,7 @@ const getUser = async (token) => {
     return null;
   }
 };
-
+console.log('port', port)
 const server = new ApolloServer({
   typeDefs,
   resolvers,

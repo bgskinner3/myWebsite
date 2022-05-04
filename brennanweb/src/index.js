@@ -49,7 +49,7 @@ const customFetch = async (uri, options) => {
 
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
 const httpLink = createHttpLink({
-  uri: 'https://brennanskinner.herokuapp.com/graphql',
+  uri: 'https://brennanskinner.herokuapp.com/graphql/',
   fetch: customFetch,
 });
 //for heroku build 
