@@ -33,13 +33,14 @@ getRecent()
     <Loading />
   ) : (
     <div>
-      <div className="w-full bg-fixed flex" style={style}>
+      <div className="w-full bg-fixed flex">
+        <img src={skylinefixed} alt="" className="w-full" />
         <div className="text-4xl md:text-5xl lg:text-7xl pt-10 absolute inset-y-56 pl-24">
           <p className="italic text-4xl text-bold text-black bd-red-100 font-serif">
             Welcome,
           </p>
         </div>
-        <div className="absolute flex inset-y-96 ml-96 sm:ml-[300px] md:ml-[500px] lg:ml-[700px] xl:ml-[900px]">
+        <div className="absolute flex inset-y-96 ml-96 sm:ml-[300px]  md:ml-[500px] lg:ml-[700px] xl:ml-[900px]">
           <button
             type="button"
             className="btn btn-active w-36 m-5"
@@ -56,11 +57,15 @@ getRecent()
           </button>
         </div>
       </div>
-      <div className="h-screen bg-white flex">
-        <div className="bg-neutral-content grid justify-items-center w-1/2">
-          <div className="m-5 p-10 text-xl text-left font-serif">
-            <img className="mask mask-circle w-full" src={profile} alt="" />
-            <p className="text-black">
+      <div className="h-screen bg-white md:flex sm:grid sm:overflow-y-scroll">
+        <div className="bg-neutral-content grid justify-items-center lg:w-1/2 md:w-1/2 sm:w-full sm:overflow-y-scroll">
+          <div className="grid grid-cols-1 content-center">
+            <img
+              className="mask mask-circle sm:w-96 "
+              src={profile}
+              alt=""
+            />
+            <p className="text-black text-xl object-contain text-left font-serif">
               My name is Brennan Skinner and im a software engineer. Here is my
               personal website where you can checkout my most recent projects,
               view my personal blog and even leave comments or messages. Thank

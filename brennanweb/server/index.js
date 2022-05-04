@@ -13,7 +13,11 @@ const getUser = async (token) => {
   try {
     if (token) {
       const { id } = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
-      const user = await User.findByPk(id);
+      const user = await User.findOne({
+        where: {
+          id: id
+        }
+      });
       return user;
     }
     return null;
@@ -27,11 +31,12 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: async ({ req }) => {
+    
     const token = req.get('Authorization') || '';
 
     if (token && token.length) {
       const user = await getUser(token.replace('Bearer ', ''));
-
+      console.log(user);
       return { user };
     } else {
       return {};

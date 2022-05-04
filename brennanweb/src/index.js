@@ -38,8 +38,8 @@ import {
 import { createUploadLink } from 'apollo-upload-client';
 
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
-const httpLink = createUploadLink({
-  uri: 'https://brennanskinner.herokuapp.com/graphql',
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000/graphql',
 });
 //for heroku build 
 //http://localhost:4000/graphql
