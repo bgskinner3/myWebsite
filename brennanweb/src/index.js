@@ -48,7 +48,7 @@ const customFetch = async (uri, options) => {
 };
 
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
-const httpLink = createUploadLink({
+const httpLink = createHttpLink({
   uri: 'https://brennanskinner.herokuapp.com/graphql',
   fetch: customFetch,
 });
@@ -62,6 +62,7 @@ const authLink = new ApolloLink((operation, forward) => {
     return {
       headers: {
         ...headers,
+        accept: 'application/json',
         Authorization: token ? `Bearer ${localStorage.getItem(jwtAuth)}` : '', // however you get your token
       },
     };
