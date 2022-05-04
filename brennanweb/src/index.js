@@ -37,9 +37,20 @@ import {
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
+const customFetch = (uri, options) => {
+  return fetch(uri, options).then((response) => {
+    if (response.status >= 500) {
+      // or handle 400 errors
+      return Promise.reject(response.status);
+    }
+    return response;
+  });
+};
+
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
 const httpLink = createHttpLink({
   uri: 'https://brennanskinner.herokuapp.com/graphql',
+  fetch: customFetch
 });
 //for heroku build 
 //http://localhost:4000/graphql
@@ -56,6 +67,7 @@ const authLink = new ApolloLink((operation, forward) => {
   });
   return forward(operation);
 });
+
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
