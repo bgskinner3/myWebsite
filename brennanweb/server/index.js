@@ -70,9 +70,9 @@ const startServer = async () => {
   
 
   server.applyMiddleware({ app });
-  app.use(express.static('public'));
+  app.use(express.static('../public'));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
   app.listen(port, () => {
     console.log(`🚀 Server ready at http://localhost:4000`);

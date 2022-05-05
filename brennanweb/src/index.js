@@ -37,28 +37,14 @@ import {
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
-const customFetch = async (uri, options) => {
-  const response = await fetch(uri, options);
-  if (response.status >= 500) {
-    // or handle 400 errors
-    return Promise.reject(response.status);
-  }
-  console.log('caught error', response)
-  return response;
-};
+
 
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
-const httpLink = createHttpLink({
-  uri: '/graphql',
-  fetch: customFetch,
-});
-//for heroku build 
-//http://localhost:4000/graphql
-//https://brennanskinner.herokuapp.com/graphql
+
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers }) => {
     const token = localStorage.getItem(jwtAuth);
-    console.log('headers???', headers)
+   
     return {
       headers: {
         ...headers,
@@ -67,12 +53,28 @@ const authLink = new ApolloLink((operation, forward) => {
       },
     };
   });
-  console.log('forward,', forward)
-  console.log('operation', operation)
+ 
   return forward(operation);
 });
 
-console.log('authenticationlink', authLink)
+
+const customFetch = (uri, options) => {
+  return fetch(uri, options).then((response) => {
+    if (response.status >= 500) {
+      // or handle 400 errors
+      return Promise.reject(response.status);
+    }
+    return response;
+  });
+};
+
+const httpLink = createUploadLink({
+  uri: '/graphql',
+  fetch: customFetch,
+});
+//for heroku build 
+//http://localhost:4000/graphql
+//https://brennanskinner.herokuapp.com/graphql
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
