@@ -7,7 +7,7 @@ const { graphqlUploadExpress } = require('graphql-upload');
 const cors = require('cors');
 const getUser = require('./db/controllers/getUser')
 const http = require('http')
-
+const path = require('path')
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 
 require('dotenv').config();
@@ -40,10 +40,15 @@ const startServer = async () => {
   await server.start();
   app.use(graphqlUploadExpress());
   app.use(cors());
-  app.use(express.static('../public'));
+
+  app.use(express.static(path.join(__dirname, '../build')));
+
+  app.get('/client/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  });
   server.applyMiddleware({ app });
   
-  await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
+  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000  }, resolve));
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
  
 };
