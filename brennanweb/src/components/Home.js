@@ -20,7 +20,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-getRecent()
+   getRecent()
   }, [data])
 
   const getRecent = () => {
@@ -84,11 +84,11 @@ getRecent()
               <div className="flex-grow border-t border-black"></div>
             </div>
 
-            <button onClick={() => navigate(`/blog/${recentPost.id}`)}>
+            {/* <button onClick={() => navigate(`/blog/${recentPost.id}`)}>
               <div className="mx-2 h-96 w-96 flex items-center justify-center bg-gray-300 bg-cover bg-center relative rounded-lg overflow-hidden">
                 <div className="absolute w-full h-full bg-black z-10 opacity-40">
                   <img
-                    src={recentPost.image}
+                    src={recentPost ? recentPost.image : ''}
                     alt=""
                     className="w-screen h-full object-cover"
                   />
@@ -101,7 +101,7 @@ getRecent()
                   <div className="flex-grow border-t border-gray-900"></div>
                 </div>
               </div>
-            </button>
+            </button> */}
             <div>
               <ArrowCircleDownTwoToneIcon
                 className="animate-bounce mt-10"

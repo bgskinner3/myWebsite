@@ -12,6 +12,11 @@ async function seed() {
       username: 'Brennan',
       password: process.env.REACT_APP_ADMIN_PASSWORD,
     });
+    await User.create({
+      id: 2,
+      username: 'Ryan',
+      password: process.env.REACT_APP_ADMIN_PASSWORD
+    });
   } catch (error) {
     console.error('syncing dummy data did not work', error);
   }

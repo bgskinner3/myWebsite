@@ -121,7 +121,7 @@ const resolvers = {
           { id: user.id, username: user.username },
           process.env.REACT_APP_JWT_SECRET,
           {
-            expiresIn: '1h',
+            expiresIn: '6h',
           }
         );
 
