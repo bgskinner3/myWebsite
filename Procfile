@@ -1,1 +1,1 @@
-web: serve -s build & react-scripts start & node server 
+web: serve -s build & node src/server 

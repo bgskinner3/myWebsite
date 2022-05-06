@@ -1,5 +1,5 @@
-const { db } = require('./server/db');
-const { User } = require('./server/db/models/User');
+const { db } = require('./src/server/db');
+const { User } = require('./src/server/db/models/User');
 require('dotenv').config();
 
 async function seed() {

@@ -56,7 +56,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "seed": "node seed.js",
-    "start:server": "node server",
+    "start:server": "node src/server",
     "start:dev": "react-scripts start & node server"
   },
   "eslintConfig": {
