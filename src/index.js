@@ -36,25 +36,25 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const responseHeaders = onError(({networkError}) => {
-  if (networkError.statusCode >= 500) {
-    console.log('network error', networkError);
+// const responseHeaders = onError(({networkError}) => {
+//   if (networkError.statusCode >= 500) {
+//     console.log('network error', networkError);
 
-    // const modify = new ApolloLink((operation, forward) => {
+//     // const modify = new ApolloLink((operation, forward) => {
 
-    // })
+//     // })
 
-  }
-})
+//   }
+// })
 
-const reponseFix = new ApolloLink((operation, forward) => {
-  return forward(operation).map((response) => {
-    console.log('before reponse', response);
-    // response.data = response.data
-    console.log('reponse', response)
-    return response;
-  });
-});
+// const reponseFix = new ApolloLink((operation, forward) => {
+//   return forward(operation).map((response) => {
+//     console.log('before reponse', response);
+//     // response.data = response.data
+//     console.log('reponse', response)
+//     return response;
+//   });
+// });
 
 const customFetch = (uri, options) => {
   return fetch(uri, options).then(async (response) => {
@@ -75,7 +75,7 @@ const customFetch = (uri, options) => {
 
 
 const httpLink = createUploadLink({
-  uri: '/graphql',
+  uri: 'https://brennanskinner.herokuapp.com',
   fetch: customFetch,
 });
 //for heroku build 
@@ -83,10 +83,10 @@ const httpLink = createUploadLink({
 //https://brennanskinner.herokuapp.com/graphql
 console.log('here', httpLink)
 console.log('another', customFetch())
-console.log('another build', reponseFix);
+// console.log('another build', reponseFix);
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: from([authLink, responseHeaders, reponseFix, httpLink]),
+  link: from([authLink, httpLink]),
 });
 
 // const client = new ApolloClient({
