@@ -9,7 +9,7 @@ const getUser = require('./db/controllers/getUser')
 const http = require('http')
 const path = require('path')
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
-
+const https = require('https')
 require('dotenv').config();
 
 
@@ -18,7 +18,7 @@ require('dotenv').config();
 const startServer = async () => {
   await db.sync();
   const app = express();
-  const httpServer = http.createServer(app);
+  const httpServer = https.createServer(app);
  
   const server = new ApolloServer({
     typeDefs,
@@ -42,7 +42,7 @@ const startServer = async () => {
   app.use(graphqlUploadExpress());
   app.use(cors());
   app.use(express.static(path.join(__dirname, '../build')));
-  app.get('/*', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
   server.applyMiddleware({ app });
