@@ -50,7 +50,7 @@ const responseHeaders = onError(({networkError}) => {
 const reponseFix = new ApolloLink((operation, forward) => {
   return forward(operation).map((response) => {
     console.log('before reponse', response);
-    response.data.date = response.data.json()
+    // response.data = response.data
     console.log('reponse', response)
     return response;
   });
@@ -83,6 +83,7 @@ const httpLink = createUploadLink({
 //https://brennanskinner.herokuapp.com/graphql
 console.log('here', httpLink)
 console.log('another', customFetch())
+console.log('another build', reponseFix);
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([authLink, responseHeaders, reponseFix, httpLink]),
