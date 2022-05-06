@@ -22,19 +22,19 @@ const startServer = async () => {
   const app = express();
  
   let httpServer;
-  let port; 
+
   if (process.env.NODE_ENV === 'production') {
     httpServer = https.createServer(app);
-    port = 'https://brennanskinner.herokuapp.com';
+  
   }
 
   if (process.env.NODE_ENV !== 'production') {
    httpServer = http.createServer(app);
-   port = 4000
+  
   }
   
   
-
+console.log('process', process.env.PORT)
 
   
  
@@ -63,8 +63,8 @@ const startServer = async () => {
   await server.start();
   
   app.use(graphqlUploadExpress());
-  app.use( '*', cors());
-  app.use('/graphql', bodyParser.json());
+  app.use( cors());
+  
   app.use(express.static(path.join(__dirname, '../build')));
   app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
@@ -76,7 +76,7 @@ const startServer = async () => {
   // await new Promise((resolve) =>
   //   httpServer.listen({ port: config.port }, resolve)
   // );
-  await new Promise((resolve) => httpServer.listen({ port }, resolve));
+  await new Promise((resolve) => httpServer.listen({ port: process.eny.PORT || 4000 }, resolve));
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 //  console.log(
 //    '🚀 Server ready at',
