@@ -47,6 +47,15 @@ const responseHeaders = onError(({networkError}) => {
   }
 })
 
+const reponseFix = new ApolloLink((operation, forward) => {
+  return forward(operation).map((response) => {
+    console.log('before reponse', response);
+    response.data.date = response.data.json()
+    console.log('reponse', response)
+    return response;
+  });
+});
+
 const customFetch = (uri, options) => {
   return fetch(uri, options).then(async (response) => {
     try {
@@ -76,7 +85,7 @@ console.log('here', httpLink)
 console.log('another', customFetch())
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: from([authLink, httpLink]),
+  link: from([authLink, responseHeaders, reponseFix, httpLink]),
 });
 
 // const client = new ApolloClient({

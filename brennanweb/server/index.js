@@ -40,6 +40,7 @@ const startServer = async () => {
   // if (process.env.NODE_ENV !== 'production') {
   //  httpServer = http.createServer(app);
   // }
+  
   let httpServer;
   if (config.ssl) {
     // Assumes certificates are in a .ssl folder off of the package root.
