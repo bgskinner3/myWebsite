@@ -9,7 +9,7 @@ const getUser = require('./db/controllers/getUser')
 const http = require('http')
 const https = require('https')
 const path = require('path')
-const fs = require('fs')
+
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -20,44 +20,18 @@ require('dotenv').config();
 const startServer = async () => {
   await db.sync();
   const app = express();
-  const configurations = {
-    production: {
-      ssl: true,
-      port: 443,
-      hostname: 'brennanskinner.herokuapp.com',
-    },
-    development: {
-      ssl: false, port: 4000, hostname: 'localhost'
-    }
-  };
-  const environment = process.env.NODE_ENV || 'development';
-  const config = configurations[environment];
-  // let httpServer;
-  // if (process.env.NODE_ENV === 'production') {
-  //   httpServer = https.createServer(app);
-  // }
-
-  // if (process.env.NODE_ENV !== 'production') {
-  //  httpServer = http.createServer(app);
-  // }
-  
+ 
   let httpServer;
-  if (config.ssl) {
-    // Assumes certificates are in a .ssl folder off of the package root.
-    // Make sure these files are secured.
-    
-    
-      httpServer = https.createServer(
-        {
-          key: fs.readFileSync(`./ssl/${environment}/server.key`),
-          cert: fs.readFileSync(`./ssl/${environment}/server.crt`),
-        },
-
-        app
-      );
-  } else {
-    httpServer = http.createServer(app);
+  if (process.env.NODE_ENV === 'production') {
+    httpServer = https.createServer(app);
   }
+
+  if (process.env.NODE_ENV !== 'production') {
+   httpServer = http.createServer(app);
+  }
+  
+  
+
 
   
  
@@ -76,7 +50,7 @@ const startServer = async () => {
       }
     },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-    csrfPrevention: true,
+   
   });
   
 
@@ -93,18 +67,18 @@ const startServer = async () => {
 
   server.applyMiddleware({ app });
   
-  await new Promise((resolve) =>
-    httpServer.listen({ port: config.port }, resolve)
-  );
-  // await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000  }, resolve));
-  // console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
- console.log(
-   '🚀 Server ready at',
-   `http${config.ssl ? 's' : ''}://${config.hostname}:${config.port}${
-     server.graphqlPath
-   }`
- );
- return { server, app };
+  // await new Promise((resolve) =>
+  //   httpServer.listen({ port: config.port }, resolve)
+  // );
+  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000  }, resolve));
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+//  console.log(
+//    '🚀 Server ready at',
+//    `http${config.ssl ? 's' : ''}://${config.hostname}:${config.port}${
+//      server.graphqlPath
+//    }`
+//  );
+//  return { server, app };
 };
 
 startServer();
