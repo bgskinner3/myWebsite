@@ -70,7 +70,7 @@ console.log('process', process.env.PORT)
   });
 
 
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ path: '/graphql', app });
   
   // await new Promise((resolve) =>
   //   httpServer.listen({ port: config.port }, resolve)
