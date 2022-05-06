@@ -11,7 +11,9 @@ import {
   createHttpLink,
   ApolloLink,
   from
+
 } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
 import { createUploadLink } from 'apollo-upload-client';
 
 
@@ -34,6 +36,16 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
+// const responseHeaders = onError(({networkError}) => {
+//   if (networkError.statusCode >= 500) {
+//     console.log('network error', networkError);
+
+//     const modify = new ApolloLink((operation, forward) => {
+
+//     })
+
+//   }
+// })
 
 const customFetch = (uri, options) => {
   return fetch(uri, options).then(async (response) => {
@@ -42,7 +54,8 @@ const customFetch = (uri, options) => {
         // or handle 400 errors
         return Promise.reject(response.status);
       }
-      return response.json();
+      console.log(response)
+      return response
       
     } catch (error) {
       console.error('big errr', error)
@@ -53,7 +66,7 @@ const customFetch = (uri, options) => {
 
 
 const httpLink = createUploadLink({
-  uri: 'https://brennanskinner.herokuapp.com/graphql',
+  uri: '/graphql',
   fetch: customFetch,
 });
 //for heroku build 
