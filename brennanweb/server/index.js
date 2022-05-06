@@ -24,6 +24,7 @@ const startServer = async () => {
     typeDefs,
     resolvers,
     context: async ({ req }) => {
+      console.log(req)
       const token = req.get('Authorization') || '';
       if (token && token.length) {
         const user = await getUser(token.replace('Bearer ', ''));
@@ -40,10 +41,8 @@ const startServer = async () => {
   await server.start();
   app.use(graphqlUploadExpress());
   app.use(cors());
-
   app.use(express.static(path.join(__dirname, '../build')));
-
-  app.get('/client/*', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
   server.applyMiddleware({ app });

@@ -24,13 +24,13 @@ const Routing = () => {
     <div>
       <main>
         <Routes>
-          <Route exact path="/client" element={<Home />} />
-          <Route exact path="/client/admin" element={<AdminLogin />} />
-          <Route exact path="/client/write" element={<CreateBlogPost />} />
-          <Route exact path ="/client/projects" element={<Projects />} />
-          <Route exact path="/client/blog" element={<Blog />} />
-          <Route exact path="/client/blog/:id" element={<SingleBlog />} />
-          <Route exact path="/client/blog/:id/edit" element={<EditBlogPost />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/admin" element={<AdminLogin />} />
+          <Route exact path="/write" element={<CreateBlogPost />} />
+          <Route exact path ="/projects" element={<Projects />} />
+          <Route exact path="/blog" element={<Blog />} />
+          <Route exact path="/blog/:id" element={<SingleBlog />} />
+          <Route exact path="/blog/:id/edit" element={<EditBlogPost />} />
         </Routes>
       </main>
       <Footer />
