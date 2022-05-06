@@ -1,0 +1,1 @@
+web: serve -s build & react-scripts start & node server 
