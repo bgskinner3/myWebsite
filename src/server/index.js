@@ -9,9 +9,8 @@ const getUser = require('./db/controllers/getUser')
 const http = require('http')
 const https = require('https')
 const path = require('path')
-
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
-const bodyParser = require('body-parser');
+
 require('dotenv').config();
 
 
@@ -78,13 +77,7 @@ console.log('process', process.env.PORT)
   // );
   await new Promise((resolve) => httpServer.listen({ port: process.eny.PORT || 4000 }, resolve));
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-//  console.log(
-//    '🚀 Server ready at',
-//    `http${config.ssl ? 's' : ''}://${config.hostname}:${config.port}${
-//      server.graphqlPath
-//    }`
-//  );
-//  return { server, app };
+
 };
 
 startServer();
