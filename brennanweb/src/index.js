@@ -36,16 +36,16 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-// const responseHeaders = onError(({networkError}) => {
-//   if (networkError.statusCode >= 500) {
-//     console.log('network error', networkError);
+const responseHeaders = onError(({networkError}) => {
+  if (networkError.statusCode >= 500) {
+    console.log('network error', networkError);
 
-//     const modify = new ApolloLink((operation, forward) => {
+    // const modify = new ApolloLink((operation, forward) => {
 
-//     })
+    // })
 
-//   }
-// })
+  }
+})
 
 const customFetch = (uri, options) => {
   return fetch(uri, options).then(async (response) => {
