@@ -1,1 +1,1 @@
-web: serve -s build & node src/server
+web: node src/server

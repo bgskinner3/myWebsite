@@ -1,6 +1,6 @@
 {
   "name": "brennanweb",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.2",
@@ -49,7 +49,6 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "heroku-prebuild": "npm install -g serve",
     "start": "react-scripts build & node src/server",
     "build": "react-scripts build",
     "test": "react-scripts test",
