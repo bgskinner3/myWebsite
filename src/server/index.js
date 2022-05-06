@@ -75,12 +75,8 @@ console.log('process', process.env.PORT)
   // await new Promise((resolve) =>
   //   httpServer.listen({ port: config.port }, resolve)
   // );
-  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000 }, resolve).then(({url}) => {
-    console.log(
-      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
-    );
-  }));
-  
+  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000 }, resolve));
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 
 };
 
