@@ -57,8 +57,8 @@
     "eject": "react-scripts eject",
     "seed": "node seed.js",
     "start:server": "node src/server",
-    "start:dev": "react-scripts start & node src/server",
-    "heroku-postbuild": "node src/server"
+    "start:dev": "react-scripts start & node src/server"
+    
   },
   "eslintConfig": {
     "extends": [
