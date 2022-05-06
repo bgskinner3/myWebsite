@@ -10,6 +10,7 @@ import {
   ApolloProvider,
   createHttpLink,
   ApolloLink,
+  from
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
@@ -44,6 +45,7 @@ const customFetch = (uri, options) => {
   });
 };
 
+
 const httpLink = createUploadLink({
   uri: '/graphql',
   fetch: customFetch,
@@ -51,11 +53,16 @@ const httpLink = createUploadLink({
 //for heroku build 
 //http://localhost:4000/graphql
 //https://brennanskinner.herokuapp.com/graphql
-
+console.log(httpLink)
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
+  link: from([authLink, httpLink]),
 });
+
+// const client = new ApolloClient({
+//   cache: new InMemoryCache(),
+//   link: authLink.concat(httpLink),
+// });
 
 ReactDOM.render(
   <BrowserRouter>
