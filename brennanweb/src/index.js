@@ -54,7 +54,7 @@ const customFetch = (uri, options) => {
         // or handle 400 errors
         return Promise.reject(response.status);
       }
-      console.log(response)
+      
       return response
       
     } catch (error) {

@@ -11,7 +11,7 @@ const https = require('https')
 const path = require('path')
 const fs = require('fs')
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
-
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 
@@ -44,7 +44,7 @@ const startServer = async () => {
   if (config.ssl) {
     // Assumes certificates are in a .ssl folder off of the package root.
     // Make sure these files are secured.
-    console.log(true, process.env.NODE_ENV);
+    
     
       httpServer = https.createServer(
         {
@@ -82,7 +82,8 @@ const startServer = async () => {
   await server.start();
   
   app.use(graphqlUploadExpress());
-  app.use( cors());
+  app.use( '*', cors());
+  app.use('/graphql', bodyParser.json());
   app.use(express.static(path.join(__dirname, '../build')));
   app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
