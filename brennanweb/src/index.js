@@ -53,7 +53,7 @@ const httpLink = createUploadLink({
 //for heroku build 
 //http://localhost:4000/graphql
 //https://brennanskinner.herokuapp.com/graphql
-console.log(httpLink)
+console.log('here', httpLink)
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([authLink, httpLink]),
