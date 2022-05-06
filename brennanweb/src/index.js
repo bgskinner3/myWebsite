@@ -36,12 +36,18 @@ const authLink = new ApolloLink((operation, forward) => {
 
 
 const customFetch = (uri, options) => {
-  return fetch(uri, options).then((response) => {
-    if (response.status >= 500) {
-      // or handle 400 errors
-      return Promise.reject(response.status);
+  return fetch(uri, options).then(async (response) => {
+    try {
+      if (response.status >= 500) {
+        // or handle 400 errors
+        return Promise.reject(response.status);
+      }
+      return response.json();
+      
+    } catch (error) {
+      console.error('big errr', error)
     }
-    return response;
+    
   });
 };
 
@@ -54,6 +60,7 @@ const httpLink = createUploadLink({
 //http://localhost:4000/graphql
 //https://brennanskinner.herokuapp.com/graphql
 console.log('here', httpLink)
+console.log('another', customFetch())
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([authLink, httpLink]),
