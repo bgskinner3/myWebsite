@@ -22,12 +22,15 @@ const startServer = async () => {
   const app = express();
  
   let httpServer;
+  let port; 
   if (process.env.NODE_ENV === 'production') {
     httpServer = https.createServer(app);
+    port = 'https://brennanskinner.herokuapp.com';
   }
 
   if (process.env.NODE_ENV !== 'production') {
    httpServer = http.createServer(app);
+   port = 4000
   }
   
   
@@ -48,6 +51,9 @@ const startServer = async () => {
       } else {
         return {};
       }
+    },
+    cors: {
+      origin: ["http://localhost:4000", "https://brennanskinner.herokuapp.com"],
     },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
    
@@ -70,7 +76,7 @@ const startServer = async () => {
   // await new Promise((resolve) =>
   //   httpServer.listen({ port: config.port }, resolve)
   // );
-  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 4000  }, resolve));
+  await new Promise((resolve) => httpServer.listen({ port }, resolve));
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 //  console.log(
 //    '🚀 Server ready at',
