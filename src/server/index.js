@@ -1,6 +1,6 @@
 const { ApolloServer } = require('apollo-server-express');
 const { resolvers } = require('./resolvers');
-const { typeDefs } = require('./type-Defs');
+const { typeDefs } = require('./type-defs');
 const { db } = require('./db');
 const express = require('express');
 const { graphqlUploadExpress } = require('graphql-upload');
