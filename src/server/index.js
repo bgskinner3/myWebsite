@@ -12,6 +12,13 @@ const path = require('path');
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 
 require('dotenv').config();
+const errorHandler = (err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  const { status } = err;
+  res.status(status).json(err);
+};
 
 const startServer = async () => {
   await db.sync();
@@ -23,6 +30,7 @@ const startServer = async () => {
     typeDefs,
     resolvers,
     context: async ({ req }) => {
+      console.log(req)
       const token = req.get('Authorization') || '';
       if (token && token.length) {
         const user = await getUser(token.replace('Bearer ', ''));
@@ -39,18 +47,16 @@ const startServer = async () => {
   await server.start();
 
   app.use(graphqlUploadExpress());
-  app.use(cors());
+  app.use("*",cors());
 
-  app.use(express.static(path.join(__dirname, '../build')));
+  app.use(express.static(path.join(__dirname, '../../build')));
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../../build', 'index.html'));
   });
-
+  app.use(errorHandler);
   server.applyMiddleware({ path: '/graphql', app });
 
-  // await new Promise((resolve) =>
-  //   httpServer.listen({ port: config.port }, resolve)
-  // );
+
   await new Promise((resolve) =>
     httpServer.listen({ port: process.env.PORT || 4000 }, resolve)
   );

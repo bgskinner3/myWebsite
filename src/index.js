@@ -75,9 +75,10 @@ const customFetch = (uri, options) => {
 
 
 const httpLink = createUploadLink({
-  uri: 'https://brennanskinner.herokuapp.com',
+  uri: 'https://brennanskinner.herokuapp.com/graphql',
   fetch: customFetch,
 });
+console.log('here', httpLink)
 //for heroku build 
 //http://localhost:4000/graphql
 //https://brennanskinner.herokuapp.com/graphql
