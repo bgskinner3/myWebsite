@@ -12,7 +12,7 @@ import {
   from
 } from '@apollo/client';
 
-//replaces createhttplink to enable uploading of photos
+//replaces createhttplink to enable uploading to this file for my blog posts 
 import { createUploadLink } from 'apollo-upload-client';
 
 
@@ -55,7 +55,7 @@ const customFetch = (uri, options) => {
 
 
 const httpLink = createUploadLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: '/graphql',
   fetch: customFetch,
 });
 console.log('here', httpLink)
