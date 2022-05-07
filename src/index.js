@@ -8,12 +8,11 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink,
   ApolloLink,
   from
-
 } from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
+
+//replaces createhttplink to enable uploading of photos
 import { createUploadLink } from 'apollo-upload-client';
 
 
@@ -36,25 +35,6 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-// const responseHeaders = onError(({networkError}) => {
-//   if (networkError.statusCode >= 500) {
-//     console.log('network error', networkError);
-
-//     // const modify = new ApolloLink((operation, forward) => {
-
-//     // })
-
-//   }
-// })
-
-// const reponseFix = new ApolloLink((operation, forward) => {
-//   return forward(operation).map((response) => {
-//     console.log('before reponse', response);
-//     // response.data = response.data
-//     console.log('reponse', response)
-//     return response;
-//   });
-// });
 
 const customFetch = (uri, options) => {
   return fetch(uri, options).then(async (response) => {
@@ -75,7 +55,7 @@ const customFetch = (uri, options) => {
 
 
 const httpLink = createUploadLink({
-  uri: 'https://brennanskinner.herokuapp.com/graphql',
+  uri: 'http://localhost:4000/graphql',
   fetch: customFetch,
 });
 console.log('here', httpLink)
@@ -90,10 +70,6 @@ const client = new ApolloClient({
   link: from([authLink, httpLink]),
 });
 
-// const client = new ApolloClient({
-//   cache: new InMemoryCache(),
-//   link: authLink.concat(httpLink),
-// });
 
 ReactDOM.render(
   <BrowserRouter>

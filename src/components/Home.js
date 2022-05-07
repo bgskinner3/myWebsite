@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Loading from './Loading';
 import { GET_ALL_BLOG_POSTS } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -7,9 +7,10 @@ import skylinefixed from '../images/skylinefixed.jpeg';
 import profile from '../images/profile.jpg';
 import Button from '@mui/material/Button';
 import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTone';
+import Projects from './Projects';
 
 const Home = () => {
-  const [recentPost, setRecentPost] = useState({})
+  const [recentPost, setRecentPost] = useState({});
   const { data, loading } = useQuery(GET_ALL_BLOG_POSTS);
   const navigate = useNavigate();
   const style = {
@@ -20,14 +21,14 @@ const Home = () => {
   };
 
   useEffect(() => {
-   getRecent()
-  }, [data])
+    getRecent();
+  }, [data]);
 
   const getRecent = () => {
-    if(data) {
-      setRecentPost(data.posts[0])
+    if (data) {
+      setRecentPost(data.posts[0]);
     }
-  }
+  };
 
   return loading ? (
     <Loading />
@@ -58,14 +59,10 @@ const Home = () => {
         </div>
       </div>
       <div className="h-screen bg-white md:flex sm:grid sm:overflow-y-scroll">
-        <div className="bg-neutral-content grid justify-items-center lg:w-1/2 md:w-1/2 sm:w-full sm:overflow-y-scroll">
-          <div className="grid grid-cols-1 content-center">
-            <img
-              className="mask mask-circle sm:w-96 "
-              src={profile}
-              alt=""
-            />
-            <p className="text-black text-xl object-contain text-left font-serif">
+        <div className="bg-neutral-content grid  lg:w-1/2 md:w-1/2 sm:w-full sm:overflow-y-scroll">
+          <div className="flex flex-col ml-24 mr-24 pb-20">
+            <img className="mask mask-circle sm:w-96 " src={profile} alt="" />
+            <p className="text-black lg:text-xl sm:text-lg object-contain text-left font-serif">
               My name is Brennan Skinner and im a software engineer. Here is my
               personal website where you can checkout my most recent projects,
               view my personal blog and even leave comments or messages. Thank
@@ -83,25 +80,29 @@ const Home = () => {
 
               <div className="flex-grow border-t border-black"></div>
             </div>
+            {recentPost ? (
+              <button onClick={() => navigate(`/blog/${recentPost.id}`)}>
+                <div className="mx-2 h-96 w-96 flex items-center justify-center bg-gray-300 bg-cover bg-center relative rounded-lg overflow-hidden">
+                  <div className="absolute w-full h-full bg-black z-10 opacity-40">
+                    <img
+                      src={recentPost.image}
+                      alt=""
+                      className="w-screen h-full object-cover"
+                    />
+                  </div>
+                  <div className="relative z-20 text-center p-5">
+                    <div className="flex-grow border-t border-gray-900"></div>
+                    <span className="font-serif text-black text-bold uppercase text-2xl tracking-wide">
+                      {recentPost.title}
+                    </span>
+                    <div className="flex-grow border-t border-gray-900"></div>
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <div> No Recent Posts</div>
+            )}
 
-            {/* <button onClick={() => navigate(`/blog/${recentPost.id}`)}>
-              <div className="mx-2 h-96 w-96 flex items-center justify-center bg-gray-300 bg-cover bg-center relative rounded-lg overflow-hidden">
-                <div className="absolute w-full h-full bg-black z-10 opacity-40">
-                  <img
-                    src={recentPost ? recentPost.image : ''}
-                    alt=""
-                    className="w-screen h-full object-cover"
-                  />
-                </div>
-                <div className="relative z-20 text-center p-5">
-                  <div className="flex-grow border-t border-gray-900"></div>
-                  <span className="font-serif text-black text-bold uppercase text-2xl tracking-wide">
-                    {recentPost.title}
-                  </span>
-                  <div className="flex-grow border-t border-gray-900"></div>
-                </div>
-              </div>
-            </button> */}
             <div>
               <ArrowCircleDownTwoToneIcon
                 className="animate-bounce mt-10"
@@ -159,37 +160,13 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div></div>
+      <div>
+        <Projects />
+      </div>
     </div>
   );
 };
 
 export default Home;
 
-// <div className="m-10 flex">
-//   <img className="mask mask-circle h-96 w-96" src={profile} alt="" />
-//   <div className="grid pl-5">
-//     <p className="m-20 text-xl text-left font-serif">
-//       My name is Brennan Skinner and im a software engineer. Here is my
-//       personal website where you can checkout my most recent projects, view my
-//       personal blog and even leave comments or messages. Thank you for
-//       stopping by and please leave a comment or message.
-//     </p>
-//     <div className="flex space-x-4">
-//       <p className="italic text-bold text-xl font-serif">Proficent: </p>
-//       <p className="text-xl font-serif">
-//         Javascript, React/Redux, PostgreSQL, Node, Sequelize, Express,
-//       </p>
-//     </div>
-//     <div className="flex space-x-4">
-//       <p className="italic text-bold text-xl font-serif">Knowledgeable:</p>
-//       <p className="text-xl font-serif">
-//         GraphQL, ApolloClient/ApolloServer, Supabase
-//       </p>
-//     </div>
-//     <div className="flex space-x-4">
-//       <p className="italic text-bold text-xl font-serif">Familar:</p>
-//       <p className="text-xl font-serif">Firebase, Docker, Kubernetes</p>
-//     </div>
-//   </div>
-// </div>;
+

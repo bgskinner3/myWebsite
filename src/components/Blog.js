@@ -61,31 +61,24 @@ const Blog = () => {
 
   const deletePost = async (id) => {
     try {
-      if(id) {
-       await DeletePost({
-         variables: {
-           deletePostId: id,
-         },
-       });
-       
-          
-      
+      if (id) {
+        await DeletePost({
+          variables: {
+            deletePostId: id,
+          },
+        });
       }
-      
-      
     } catch (error) {
-      console.error(error)
+      console.error(error);
     } finally {
-      refetch()
+      refetch();
     }
-  }
+  };
   return loading ? (
     <Loading />
   ) : (
     <div style={style} className="bg-fixed">
       <div className="h-full bg-cover bg-center flex grid grid-cols-1 content-center overflow-y-scroll ">
-        {/* <img src={nycskylinetrain} alt="" className="bg-scroll"/> */}
-
         {data
           ? data.posts.map((post) => {
               const date = String(new Date(post.createdAt));
@@ -125,7 +118,7 @@ const Blog = () => {
                           Read more...
                         </Button>
                         {admin ? (
-                          <div className="flex">
+                          <div className="flex justify-between">
                             <button
                               className="btn glass w-56"
                               onClick={() => deletePost(post.id)}

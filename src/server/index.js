@@ -7,7 +7,6 @@ const { graphqlUploadExpress } = require('graphql-upload');
 const cors = require('cors');
 const getUser = require('./db/controllers/getUser');
 const http = require('http');
-const https = require('https');
 const path = require('path');
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 
@@ -30,7 +29,6 @@ const startServer = async () => {
     typeDefs,
     resolvers,
     context: async ({ req }) => {
-      console.log(req)
       const token = req.get('Authorization') || '';
       if (token && token.length) {
         const user = await getUser(token.replace('Bearer ', ''));
@@ -40,14 +38,14 @@ const startServer = async () => {
         return {};
       }
     },
-   
+
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
   await server.start();
 
   app.use(graphqlUploadExpress());
-  app.use("*",cors());
+  app.use('*', cors());
 
   app.use(express.static(path.join(__dirname, '../../build')));
   app.get('/*', (req, res) => {
@@ -55,7 +53,6 @@ const startServer = async () => {
   });
   app.use(errorHandler);
   server.applyMiddleware({ path: '/graphql', app });
-
 
   await new Promise((resolve) =>
     app.listen({ port: process.env.PORT || 4000 }, resolve)

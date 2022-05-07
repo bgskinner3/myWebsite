@@ -105,7 +105,7 @@ const resolvers = {
     },
     login: async (parent, args, context) => {
       try {
-        console.log('made it to server', args)
+       
         const user = await User.findOne({ where: { username: args.username } });
 
         if (!user) {
