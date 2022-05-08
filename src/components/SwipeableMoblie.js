@@ -18,6 +18,7 @@ const SwipeableMoblie = (props) => {
 
   const getFirstThree = () => {
     if(data) {
+      
       const getFirst = data.posts[0]
       const getSecond = data.posts[1]
       const getThird = data.posts[2]
@@ -35,7 +36,7 @@ const SwipeableMoblie = (props) => {
     <Loading />
   ) : (
     <div>
-      {data ? (
+      {first && second && third ? (
         <div
           id="carouselDarkVariant"
           className="carousel slide carousel-fade carousel-dark relative h-full"

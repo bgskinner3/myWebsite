@@ -52,10 +52,16 @@ const customFetch = (uri, options) => {
     
   });
 };
+let link
+if(process.env.PORT) {
+  link = '/graphql';
+} else {
+  link = 'http://localhost:4000/graphql';
+}
 
 
 const httpLink = createUploadLink({
-  uri: '/graphql',
+  uri: link,
   fetch: customFetch,
 });
 console.log('here', httpLink)
