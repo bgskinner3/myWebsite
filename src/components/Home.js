@@ -36,56 +36,18 @@ const Home = () => {
     <Loading />
   ) : (
     <div>
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box relative">
-          <label
-            for="my-modal-3"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
-          >
-            ✕
-          </label>
-          <h3 className="text-lg font-bold">
-            Congratulations random Interner user!
-          </h3>
-          <Resume />
-        </div>
-      </div>
       <div className="w-full bg-fixed flex">
         <img src={skylinefixed} alt="" className="w-full" />
-        <div className="text-4xl md:text-5xl lg:text-7xl pt-10 absolute inset-y-56 pl-24">
-          <p className="italic text-4xl text-bold text-black bd-red-100 font-serif">
-            Welcome,
-          </p>
-        </div>
-        <div className="absolute flex inset-y-96 ml-96  hidden lg:visiable md:visiable  md:ml-[500px] lg:ml-[700px] xl:ml-[900px] ">
-          <button
-            type="button"
-            className="btn btn-active w-36 m-5 "
-            onClick={() => navigate('/blog')}
-          >
-            Blog
-          </button>
-          {/* <button
-            type="button"
-            className="btn glass w-36 m-5 text-black"
-            onClick={() => navigate('/projects')}
-          >
-            Resume
-          </button> */}
-          <label
-            for="my-modal-3"
-            className="btn modal-button btn glass w-36 m-5 text-black "
-          >
-            Resume
-          </label>
-        </div>
       </div>
-      <div className="h-screen bg-white md:flex sm:grid ">
+      <div className="h-screen bg-white md:flex sm:grid">
         <div className="bg-neutral-content grid  lg:w-1/2 md:w-1/2 sm:w-full ">
-          <div className="flex flex-col ml-24 mr-24 pb-20">
-            <img className="mask mask-circle sm:w-96 " src={profile} alt="" />
-            <p className="text-black lg:text-xl sm:text-lg object-contain text-left font-serif">
+          <div className="flex flex-col pb-20">
+            <img
+              className="mask mask-circle sm:w-96 ml-24 mr-24 "
+              src={profile}
+              alt=""
+            />
+            <p className="text-black text-xs lg:text-lg object-contain text-left font-serif ml-10 mr-10">
               My name is Brennan Skinner and im a software engineer. Here is my
               personal website where you can checkout my most recent projects,
               view my personal blog and even leave comments or messages. Thank
@@ -95,44 +57,12 @@ const Home = () => {
         </div>
         <div className="flex-1 md:flex overflow-hidden hidden">
           <div className="flex-1 overflow-y-scroll">
-            <div className="relative flex py-5 items-center">
-              <div className="flex-grow border-t border-black"></div>
-              <span className="flex-shrink mx-4 text-gray-400 italic text-3xl">
-                Recent
-              </span>
-              <div className="flex-grow border-t border-black"></div>
-            </div>
-            {/* {recentPost ? (
-              <button onClick={() => navigate(`/blog/${recentPost.id}`)}>
-                <div className="mx-2 h-96 w-96 flex items-center justify-center bg-gray-300 bg-cover bg-center relative rounded-lg overflow-hidden">
-                  <div className="absolute w-full h-full bg-black z-10 opacity-40">
-                    <img
-                      src={recentPost.image}
-                      alt=""
-                      className="w-screen h-full object-cover"
-                    />
-                  </div>
-                  <div className="relative z-20 text-center p-5">
-                    <div className="flex-grow border-t border-gray-900"></div>
-                    <span className="font-serif text-black text-bold uppercase text-2xl tracking-wide">
-                      {recentPost.title}
-                    </span>
-                    <div className="flex-grow border-t border-gray-900"></div>
-                  </div>
-                </div>
-              </button>
-            ) : (
-              <div> No Recent Posts</div>
-            )} */}
-
             <div>
               <ArrowCircleDownTwoToneIcon
                 className="animate-bounce mt-10"
                 sx={{ fontSize: 70 }}
               />
             </div>
-
-            <div className="flex-grow border-t border-black mt-10"></div>
             <div className="grid items-center justify-center ">
               {data
                 ? data.posts.map((post) => {
@@ -179,14 +109,14 @@ const Home = () => {
                   })
                 : 'nothing'}
             </div>
-
           </div>
         </div>
+        <div className="md:hidden ">
+          <SwipeableMoblie data={data} loading={loading} />
+        </div>
       </div>
-      <div className='md:hidden'>
-        <SwipeableMoblie data={data} />
-      </div>
-      <div>
+      <div className="md:hidden flex-grow border-t border-white pb-20 bg-white"></div>
+      <div className="">
         <Projects />
       </div>
     </div>
@@ -194,5 +124,3 @@ const Home = () => {
 };
 
 export default Home;
-
-

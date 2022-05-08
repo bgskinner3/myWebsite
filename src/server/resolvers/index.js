@@ -134,7 +134,6 @@ const resolvers = {
       }
     },
     uploadFile: async (parent, { file }) => {
-      console.log('getting', file);
       const { createReadStream, filename, mimetype, encoding } = await file;
 
       const { ext } = path.parse(filename);
@@ -142,15 +141,18 @@ const resolvers = {
       const stream = createReadStream();
       const pathName = path.join(
         __dirname,
-        `../../client/public/blogimages/${randomName}`
+        `../../../public/blogimages/${randomName}`
       );
+      //   ../../../build/blogimages
       await stream.pipe(fs.createWriteStream(pathName));
 
       return {
         url: `http://localhost:4000/blogimages/${randomName}`,
       };
+      //https://brennanskinner.herokuapp.com/blogimages/${randomName}
     },
   },
 };
+
 
 module.exports = { resolvers };

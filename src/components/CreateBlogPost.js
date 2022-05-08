@@ -97,24 +97,40 @@ const CreateBlogPost = () => {
       </div>
 
       <form onSubmit={() => HandleSubmit()}>
-        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
         <div className="modal">
           <div className="modal-box relative">
             <label
-              htmlFor="my-modal-3"
+              htmlFor="my-modal-4"
               className="btn btn-sm btn-circle absolute right-2 top-2"
             >
               ✕
             </label>
-            <h3 className="text-lg font-bold">
-              Congratulations random Interner user!
-            </h3>
-            <p className="py-4">
-              You've been selected for a chance to get one year of subscription
-              to use Wikipedia for free!
-            </p>
+            <div className="wrapper p-5 md:p-20  w-full antialiased text-gray-900">
+              <img
+                src={path}
+                alt=""
+                className="w-full h-56 object-cover object-center rounded-lg shadow-md shadow-2xl shadow-black "
+              />
+
+              <div className="relative px-4 -mt-12 ">
+                <div className="bg-base-200 p-6 rounded-lg shadow-lg w-84 shadow-2xl shadow-black ">
+                  <div className="flex items-baseline"></div>
+
+                  <h4 className="mt-1 text-xl font-semibold uppercase text-white leading-tight truncate">
+                    {title}
+                  </h4>
+
+                  <div className="mt-1">
+                    <span className="text-white text-sm line-clamp-3">
+                      {content}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button
-              htmlFor="my-modal-3"
+              htmlFor="my-modal-4"
               className="btn btn-outline btn-accent w-full"
               type="submit"
             >
@@ -184,7 +200,7 @@ const CreateBlogPost = () => {
           placeholder="What Happened Today"
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
-        <label htmlFor="my-modal-3" className="btn modal-button m-10">
+        <label htmlFor="my-modal-4" className="btn modal-button m-10">
           Preview Blog Post
         </label>
       </form>

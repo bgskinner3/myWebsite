@@ -85,11 +85,11 @@ const Blog = () => {
               return (
                 <div
                   key={post.id}
-                  className="wrapper p-20 w-full antialiased text-gray-900"
+                  className="wrapper p-5 md:p-20  w-full antialiased text-gray-900"
                 >
                   <img
                     src={post.image}
-                    alt=" random imgee"
+                    alt=""
                     className="w-full h-56 object-cover object-center rounded-lg shadow-md shadow-2xl shadow-black "
                   />
 
@@ -120,13 +120,13 @@ const Blog = () => {
                         {admin ? (
                           <div className="flex justify-between">
                             <button
-                              className="btn glass w-56"
+                              className="btn glass w-24 md:w-56"
                               onClick={() => deletePost(post.id)}
                             >
                               Delete
                             </button>
                             <button
-                              className="btn btn-active w-56"
+                              className="btn btn-active w-24 md:w-56"
                               onClick={() => navigate(`/blog/${post.id}/edit`)}
                             >
                               Edit

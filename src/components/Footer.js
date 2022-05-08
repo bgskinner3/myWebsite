@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
   return (
-    <footer className="footer justify-center border-t-2 p-10 bg-base-100 p-5 shadow-md md:px-10 text-neutral-content bottom-0">
+    <footer className="footer justify-center border-t-2 p-10 bg-base-100 shadow-md md:px-10 text-neutral-content bottom-0">
       <div className="flex ">
         <span className="footer-title text-xl"></span>
 

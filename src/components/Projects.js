@@ -7,8 +7,8 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Projects = () => {
   return (
-    <div className="bg-white pb-10">
-      <div className="flex-grow border-t border-black"></div>
+    <div className="bg-white">
+      <div className="md:flex flex-grow border-t border-black hidden"></div>
       <div className="md:flex m-20 hidden">
         <figure className="w-3/4 m-5 shadow-xl">
           <img src={publicsquare} alt="" className="h-full w-full" />
@@ -70,9 +70,7 @@ const Projects = () => {
         </div>
       </div>
 
-      <div className="md:flex flex-grow border-t border-black hidden">
-        hidden
-      </div>
+      <div className="md:flex flex-grow border-t border-black hidden"></div>
 
       <div className="md:flex m-20 hidden">
         <div className="card lg:card-side bg-base-100 shadow-xl shadow-black  m-5 w-3/4">
@@ -140,7 +138,7 @@ const Projects = () => {
 
       <div className="md:flex flex-grow border-t border-black hidden"></div>
 
-      <div className="md:flex m-20 hidden">
+      <div className="md:flex p-20 hidden">
         <figure className="w-3/4 m-5 shadow-xl">
           <img src={bodegswap} alt="" className="h-full w-full" />
         </figure>
@@ -201,20 +199,20 @@ const Projects = () => {
       </div>
 
       <div className="md:hidden flex flex-wrap ">
-        <label className=" swap swap-flip text-9xl ml-24 pb-10 pt-10">
+        <label className=" swap swap-flip p-10 ">
           <input type="checkbox" />
 
           <div className="swap-off h-full w-full">
-            <figure className="w-3/4 m-5 shadow-xl">
-              <img src={bodegswap} alt="" className="h-full w-full" />
+            <figure className="shadow-xl">
+              <img src={bodegswap} alt="" className="" />
             </figure>
           </div>
-          <div className="swap-on h-full w-full">
-            <div className="card  lg:card-side bg-base-100 shadow-xl shadow-black  m-5 w-3/4">
+          <div className="swap-on">
+            <div className="card w-full lg:card-side bg-base-100 shadow-xl shadow-black">
               <div className="card-body">
                 <div className="grid">
-                  <h2 className="card-title text-sm">Bodega Swap</h2>
-                  <p className="text-left font-serif text-sm">
+                  <h2 className="card-title text-xs underline">Bodega Swap</h2>
+                  <p className="text-left font-serif text-xs">
                     Bodega Swap is a platform that allows users to trade their
                     'trash' for some else's 'treasures'. Connect with other
                     users that have items on their accounts you would liek to
@@ -224,25 +222,22 @@ const Projects = () => {
                 </div>
                 <div className="flex justify-between">
                   <div className="grid grid-cols-1">
-                    <h2 className="card-title text-sm">Tech Stack</h2>
-                    <p className="grid text-left text-sm">
+                    <h2 className="card-title text-xs text-bold underline">
+                      Tech
+                    </h2>
+                    <p className="grid text-left text-xs">
                       <li>React</li>
                       <li>Tailwind</li>
                       <li>Supabase</li>
                     </p>
                   </div>
                   <div className="grid grid-cols-1">
-                    <p className="text-center text-bold text-sm">
+                    <p className="text-center text-bold text-xs underline">
                       Project Duration
                     </p>
-                    <p className="text-sm">March 15 2022 - April 5 2022</p>
-
-                    <p className="text-center text-bold text-sm">
-                      Team Members
-                    </p>
-                    <p className="text-sm">
-                      Colin Forbes, Kaitlyn Zou, Brennan Skinner
-                    </p>
+                    <div className="text-xs grid">
+                      <p>March 15 2022</p> - April 5 2022
+                    </div>
                   </div>
                 </div>
 
@@ -250,7 +245,7 @@ const Projects = () => {
                   <div>
                     <a href="https://bodega-swap.herokuapp.com">
                       <GetAppIcon
-                        sx={{ fontSize: 50 }}
+                        sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
@@ -259,7 +254,7 @@ const Projects = () => {
                   <div>
                     <a href="https://github.com/FSA-Capstone-2201-Team-7/bodega-swap">
                       <GitHubIcon
-                        sx={{ fontSize: 50 }}
+                        sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
@@ -271,19 +266,19 @@ const Projects = () => {
           </div>
         </label>
         <div className="flex-grow border-t border-black"></div>
-        <label className=" swap swap-flip text-9xl ml-24 pb-10 pt-10">
+        <label className=" swap swap-flip p-10">
           <input type="checkbox" />
           <div className="swap-off h-full w-full">
-            <figure className="w-3/4 m-5 shadow-xl">
+            <figure className="shadow-xl">
               <img src={piepal} alt="" className="h-full w-full" />
             </figure>
           </div>
           <div className="swap-on">
-            <div className="card lg:card-side bg-base-100 shadow-xl shadow-black  m-5 w-3/4">
+            <div className="card w-full lg:card-side bg-base-100 shadow-xl shadow-black">
               <div className="card-body">
                 <div className="grid">
-                  <h2 className="card-title text-sm">Pie-Pal</h2>
-                  <p className="text-left font-serif text-sm">
+                  <h2 className="card-title text-xs underline">Pie-Pal</h2>
+                  <p className="text-left font-serif text-xs">
                     Pie-Pal is a ecommerce application providing consumers the
                     ability to purchase pizza from anywhere in country. While
                     there are many cities claiming to have best pizza (Detriot,
@@ -293,8 +288,10 @@ const Projects = () => {
                 </div>
                 <div className="flex justify-between">
                   <div className="grid grid-cols-1 ">
-                    <h2 className="card-title text-sm">Tech Stack</h2>
-                    <p className="grid text-left text-sm">
+                    <h2 className="card-title text-xs text-bold underline">
+                      Tech
+                    </h2>
+                    <p className="grid text-left text-xs">
                       <li>React/Redux</li>
                       <li>Postgres</li>
                       <li>Express</li>
@@ -302,20 +299,12 @@ const Projects = () => {
                   </div>
                   <div className="grid">
                     <div className="justify-between">
-                      <h2 className="text-center text-bold text-sm">
+                      <h2 className="text-center text-bold text-xs underline">
                         Project Duration
                       </h2>
-                      <p className="text-sm">
-                        February 28 2022 - March 14 2022
-                      </p>
-                    </div>
-                    <div>
-                      <h2 className="text-center text-bold text-sm">
-                        Team Members
-                      </h2>
-                      <p className="text-sm">
-                        David Durnham, Ryan Heaux, Brennan Skinner
-                      </p>
+                      <div className="text-xs grid">
+                        <p>February 28 2022</p> - March 14 2022
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -324,7 +313,7 @@ const Projects = () => {
                   <div>
                     <a href="https://pie-pal.herokuapp.com/">
                       <GetAppIcon
-                        sx={{ fontSize: 50 }}
+                        sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
@@ -333,7 +322,7 @@ const Projects = () => {
                   <div>
                     <a href="https://github.com/2201-GraceShopper-CharmanderChargers/Pie-Pal">
                       <GitHubIcon
-                        sx={{ fontSize: 50 }}
+                        sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
@@ -346,19 +335,21 @@ const Projects = () => {
         </label>
 
         <div className="flex-grow border-t border-black"></div>
-        <label className=" swap swap-flip text-9xl ml-24 pt-10">
+        <label className=" swap swap-flip p-10">
           <input type="checkbox" />
           <div className="swap-off h-full w-full">
-            <figure className="w-3/4 m-5 shadow-xl">
+            <figure className="shadow-xl">
               <img src={publicsquare} alt="" className="h-full w-full" />
             </figure>
           </div>
           <div className="swap-on">
-            <div className="card lg:card-side bg-base-100 shadow-xl shadow-black m-5 w-3/4">
+            <div className="card lg:card-side bg-base-100 shadow-xl shadow-black ">
               <div className="card-body">
                 <div className="grid">
-                  <h2 className="card-title text-sm">Public Sqaure</h2>
-                  <p className="text-left font-serif text-sm">
+                  <h2 className="card-title text-xs underline">
+                    Public Sqaure
+                  </h2>
+                  <p className="text-left font-serif text-xs">
                     Public Sqaure, while still in development, aims to be a News
                     verfication platform. Through community activity and voting,
                     users can vote and provide evidence on posted articles to
@@ -369,23 +360,22 @@ const Projects = () => {
                 </div>
                 <div className="flex justify-between">
                   <div className="grid grid-cols-1">
-                    <h2 className="card-title text-sm">Tech Stack* TBA</h2>
-                    <p className="grid text-left text-sm">
+                    <h2 className="card-title text-xs underline">
+                      Tech Stack* TBA
+                    </h2>
+                    <p className="grid text-left text-xs">
                       <li>GraphQL</li>
                       <li>React</li>
                       <li>Postgres</li>
                     </p>
                   </div>
                   <div className="grid grid-cols-1">
-                    <p className="text-center text-bold text-sm">
+                    <p className="text-center text-bold text-xs underline">
                       Project Duration
                     </p>
-                    <p className="text-sm">May 1 2022 - Currently in progess</p>
-
-                    <p className="text-center text-bold text-sm">
-                      Team Members
-                    </p>
-                    <p className="text-sm">Brennan Skinner</p>
+                    <div className="text-xs">
+                      <p>May 1 2022</p> - Currently in progess
+                    </div>
                   </div>
                 </div>
 
@@ -393,7 +383,7 @@ const Projects = () => {
                   <div>
                     <a href="">
                       <GetAppIcon
-                        sx={{ fontSize: 50 }}
+                        sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
@@ -402,7 +392,7 @@ const Projects = () => {
                   <div>
                     <a href="">
                       <GitHubIcon
-                        sx={{ fontSize: 50 }}
+                        sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>

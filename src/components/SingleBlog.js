@@ -51,15 +51,15 @@ const SingleBlog = () => {
   ) : (
     <div className="bg-white">
       <div>
-        <div className="p-24">
+        <div className="p-10 md:pl-56 md:pr-56">
           <img src={data.post.image} alt="" className="w-full rounded" />
         </div>
-        <div className="flex pl-24 items-stretch gap-x-4 pb-10">
-          <h1 className=" text-3xl font-serif underline text-black">
+        <div className="grid grid-cols-1 text-center p-5 items-stretch gap-x-4 pb-10">
+          <h1 className="text-3xl font-serif underline text-black">
             {data.post.title}
           </h1>
-          <div className='flex mt-3 '>
-            <p className="mr-5">{getDate}</p>
+          <div className="flex mt-3 justify-center">
+            <p className="mr-5 text-center">{getDate}</p>
             <p className="italic">{getReadingTime}</p>
           </div>
         </div>

@@ -41,7 +41,7 @@ const NavBar = () => {
           >
             <label
               tabIndex="0"
-              className="btn m-1 bg-indigo-500 hover:bg-indigo-400 hover:border-indigo-400 border-violet-400 "
+              className="btn m-1 bg-base-200 hover:bg-base-200 hover:border-indigo-400 border-violet-400 "
             >
               {navMenuOpen ? (
                 <XIcon className="h-6" />
@@ -158,8 +158,12 @@ const NavBar = () => {
         </div>
       ) : (
         <div className="flex items-center">
-          <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-          <div className="modal">
+          <input
+            type="checkbox"
+            id="my-modal-3"
+            className="modal-toggle md:hidden"
+          />
+          <div className="modal md:hidden">
             <div className="modal-box relative">
               <label
                 htmlFor="my-modal-3"
@@ -176,12 +180,12 @@ const NavBar = () => {
           >
             <label
               tabIndex="0"
-              className="btn m-1 bg-indigo-500 hover:bg-indigo-400 hover:border-indigo-400 border-violet-400 "
+              className="btn m-1 bg-white hover:bg-white hover:border-indigo-400 border-white "
             >
               {navMenuOpen ? (
                 <XIcon className="h-6" />
               ) : (
-                <MenuIcon className="h-6 " />
+                <MenuIcon className="h-6 bg-white" />
               )}
             </label>
           </nav>

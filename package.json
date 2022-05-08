@@ -35,6 +35,7 @@
     "react-scripts": "5.0.1",
     "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1",
+    "tw-elements": "^1.0.0-alpha12",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",
