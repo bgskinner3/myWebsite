@@ -8,6 +8,8 @@ import profile from '../images/profile.jpg';
 import Button from '@mui/material/Button';
 import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTone';
 import Projects from './Projects';
+import Resume from './Resume';
+import SwipeableMoblie from './SwipeableMoblie';
 
 const Home = () => {
   const [recentPost, setRecentPost] = useState({});
@@ -34,6 +36,21 @@ const Home = () => {
     <Loading />
   ) : (
     <div>
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
+          <label
+            for="my-modal-3"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <h3 className="text-lg font-bold">
+            Congratulations random Interner user!
+          </h3>
+          <Resume />
+        </div>
+      </div>
       <div className="w-full bg-fixed flex">
         <img src={skylinefixed} alt="" className="w-full" />
         <div className="text-4xl md:text-5xl lg:text-7xl pt-10 absolute inset-y-56 pl-24">
@@ -41,25 +58,31 @@ const Home = () => {
             Welcome,
           </p>
         </div>
-        <div className="absolute flex inset-y-96 ml-96 sm:ml-[300px]  md:ml-[500px] lg:ml-[700px] xl:ml-[900px]">
+        <div className="absolute flex inset-y-96 ml-96  hidden lg:visiable md:visiable  md:ml-[500px] lg:ml-[700px] xl:ml-[900px] ">
           <button
             type="button"
-            className="btn btn-active w-36 m-5"
+            className="btn btn-active w-36 m-5 "
             onClick={() => navigate('/blog')}
           >
             Blog
           </button>
-          <button
+          {/* <button
             type="button"
             className="btn glass w-36 m-5 text-black"
             onClick={() => navigate('/projects')}
           >
             Resume
-          </button>
+          </button> */}
+          <label
+            for="my-modal-3"
+            className="btn modal-button btn glass w-36 m-5 text-black "
+          >
+            Resume
+          </label>
         </div>
       </div>
-      <div className="h-screen bg-white md:flex sm:grid sm:overflow-y-scroll">
-        <div className="bg-neutral-content grid  lg:w-1/2 md:w-1/2 sm:w-full sm:overflow-y-scroll">
+      <div className="h-screen bg-white md:flex sm:grid ">
+        <div className="bg-neutral-content grid  lg:w-1/2 md:w-1/2 sm:w-full ">
           <div className="flex flex-col ml-24 mr-24 pb-20">
             <img className="mask mask-circle sm:w-96 " src={profile} alt="" />
             <p className="text-black lg:text-xl sm:text-lg object-contain text-left font-serif">
@@ -70,17 +93,16 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 md:flex overflow-hidden hidden">
           <div className="flex-1 overflow-y-scroll">
             <div className="relative flex py-5 items-center">
               <div className="flex-grow border-t border-black"></div>
               <span className="flex-shrink mx-4 text-gray-400 italic text-3xl">
                 Recent
               </span>
-
               <div className="flex-grow border-t border-black"></div>
             </div>
-            {recentPost ? (
+            {/* {recentPost ? (
               <button onClick={() => navigate(`/blog/${recentPost.id}`)}>
                 <div className="mx-2 h-96 w-96 flex items-center justify-center bg-gray-300 bg-cover bg-center relative rounded-lg overflow-hidden">
                   <div className="absolute w-full h-full bg-black z-10 opacity-40">
@@ -101,7 +123,7 @@ const Home = () => {
               </button>
             ) : (
               <div> No Recent Posts</div>
-            )}
+            )} */}
 
             <div>
               <ArrowCircleDownTwoToneIcon
@@ -111,7 +133,7 @@ const Home = () => {
             </div>
 
             <div className="flex-grow border-t border-black mt-10"></div>
-            <div className="grid items-center justify-center">
+            <div className="grid items-center justify-center ">
               {data
                 ? data.posts.map((post) => {
                     const date = String(new Date(post.createdAt));
@@ -157,8 +179,12 @@ const Home = () => {
                   })
                 : 'nothing'}
             </div>
+
           </div>
         </div>
+      </div>
+      <div className='md:hidden'>
+        <SwipeableMoblie data={data} />
       </div>
       <div>
         <Projects />
