@@ -34,7 +34,8 @@ const SwipeableMoblie = (props) => {
   return loading ? (
     <Loading />
   ) : (
-    
+    <div>
+      {data ? (
         <div
           id="carouselDarkVariant"
           className="carousel slide carousel-fade carousel-dark relative h-full"
@@ -173,7 +174,10 @@ const SwipeableMoblie = (props) => {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-     
+      ) : (
+        'nothing to currently display'
+      )}
+    </div>
   );
 };
 
