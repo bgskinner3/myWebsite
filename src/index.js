@@ -53,9 +53,11 @@ const customFetch = (uri, options) => {
   });
 };
 let link
-if(process.env.PORT) {
+if(process.env.NODE_ENV === 'production') {
+ console.log('production true')
   link = '/graphql';
 } else {
+  console.log('development true');
   link = 'http://localhost:4000/graphql';
 }
 
