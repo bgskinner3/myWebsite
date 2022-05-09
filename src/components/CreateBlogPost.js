@@ -138,23 +138,23 @@ const CreateBlogPost = () => {
             </button>
           </div>
         </div>
-        <div className="flex m-10 justify-center">
-          <div className=" flex grid mr-10">
+        <div className="grid md:flex m-10 justify-center">
+          <div className=" flex grid md:mr-10">
             <label>TITLE</label>
             <input
               type="text"
               placeholder="Title"
-              className="input input-bordered bg-neutral-focus input-success input-lg w-screen max-w-xs "
+              className="input input-bordered bg-neutral-focus input-success input-lg w-56 md:w-screen max-w-xs "
               required
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className=" flex grid">
+          <div className="flex grid">
             <label>SUBJECT</label>
             <div className="dropdown">
               <label
                 tabIndex="0"
-                className="btn m-1 btn-lg w-full btn-outline btn-success"
+                className="btn m-1 btn-lg w-56 md:w-full btn-outline btn-success"
               >
                 Select Subject
               </label>
@@ -184,11 +184,11 @@ const CreateBlogPost = () => {
             </div>
           </div>
 
-          <div className="flex grid ml-10">
+          <div className="flex grid md:ml-10">
             <label>UPLOAD IMAGE</label>
             <input
               type="file"
-              className=" input input-bordered input-success bg-neutral-focus input-lg pt-3  w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+              className=" input input-bordered input-success bg-neutral-focus input-lg pt-3  w-56 md:w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
               onChange={(e) => {
                 handleBlogUpload(e);
               }}

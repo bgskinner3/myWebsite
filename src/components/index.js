@@ -7,7 +7,8 @@ import Footer from './Footer';
 import SingleBlog from './SingleBlog';
 import Projects from './Projects';
 import EditBlogPost from './EditBlogPost';
-
+import Message from './Message';
+import AdminMessages from './AdminMessages';
 export {
   Home,
   NavBar,
@@ -17,5 +18,7 @@ export {
   Footer,
   SingleBlog,
   Projects,
-  EditBlogPost
+  EditBlogPost,
+  Message,
+  AdminMessages
 };

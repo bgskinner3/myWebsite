@@ -6,7 +6,6 @@ module.exports = async (token) => {
   try {
     if (token) {
       const { id } = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
-      console.log('fetching user', User);
       const user = await User.findOne({
         where: {
           id: id,

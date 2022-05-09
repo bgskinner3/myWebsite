@@ -57,10 +57,16 @@ const Home = () => {
         </div>
         <div className="flex-1 md:flex overflow-hidden hidden">
           <div className="flex-1 overflow-y-scroll">
-            <div>
+            {/* <div>
               <ArrowCircleDownTwoToneIcon
                 className="animate-bounce mt-10"
                 sx={{ fontSize: 70 }}
+              />
+            </div> */}
+            <div className="justify-end absolute flex mt-96 pt-36 pl-10">
+              <ArrowCircleDownTwoToneIcon
+                className="animate-bounce mt-10"
+                sx={{ fontSize: 80 }}
               />
             </div>
             <div className="grid items-center justify-center ">
@@ -111,10 +117,12 @@ const Home = () => {
             </div>
           </div>
         </div>
+
         <div className="md:hidden ">
           <SwipeableMoblie data={data} loading={loading} />
         </div>
       </div>
+
       <div className="md:hidden flex-grow border-t border-white pb-20 bg-white"></div>
       <div className="">
         <Projects />

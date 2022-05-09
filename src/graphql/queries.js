@@ -24,3 +24,24 @@ export const GET_SINGLE_BLOG_POST = gql`
     }
   }
 `;
+
+export const GET_ALL_MESSAGES = gql`
+  query getAllMessages {
+    messages {
+      id
+      content
+      read
+      email
+    }
+  }
+`;
+
+export const GET_ALL_COMMENTS = gql`
+  query getAllComments {
+    comments {
+      content
+      postId
+      createdAt
+    }
+  }
+`;

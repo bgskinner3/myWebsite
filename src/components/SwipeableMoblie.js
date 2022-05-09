@@ -76,9 +76,9 @@ const SwipeableMoblie = (props) => {
                 alt="Motorbike Smoke"
               />
               <div className="carousel-caption absolute text-center mb-10">
-                <h5 className="text-4xl text-white">{first.title}</h5>
-                <p className="line-clamp-3 text-white">
-                  Some representative placeholder content for the first slide.
+                <h5 className="text-4xl text-black">{first.title}</h5>
+                <p className="line-clamp-3 text-black">
+                  {first.content}
                 </p>
                 <div className="mt-4">
                   <Button
@@ -98,8 +98,8 @@ const SwipeableMoblie = (props) => {
                 alt=""
               />
               <div className="carousel-caption absolute text-center mb-10">
-                <h5 className="text-4xl  text-white">{second.title}</h5>
-                <p className="line-clamp-3  text-white">{second.content}</p>
+                <h5 className="text-4xl  text-black">{second.title}</h5>
+                <p className="line-clamp-3  text-black">{second.content}</p>
                 <div className="pt-4">
                   <Button
                     className="btn btn-primary"
@@ -118,8 +118,8 @@ const SwipeableMoblie = (props) => {
                 alt=""
               />
               <div className="carousel-caption absolute text-center mb-10 ">
-                <h5 className="text-4xl text-white">{third.title}</h5>
-                <p className="line-clamp-3  text-white">{third.content}</p>
+                <h5 className="text-4xl text-black">{third.title}</h5>
+                <p className="line-clamp-3  text-black">{third.content}</p>
                 <div className="pt-4">
                   <Button
                     className="btn btn-primary"
@@ -138,7 +138,7 @@ const SwipeableMoblie = (props) => {
                 alt="Woman Reading a Book"
               />
               <div className="carousel-caption absolute text-center mb-10">
-                <h5 className="text-4xl text-white">Check Out More Posts</h5>
+                <h5 className="text-4xl text-black">Check Out More Posts</h5>
                 <div className="pt-4 text-2xl">
                   <Button
                     className="btn btn-primary"

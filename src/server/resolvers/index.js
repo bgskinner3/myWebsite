@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 const { Post } = require('../db/models/Post');
 const { User } = require('../db/models/User');
+const {Comment} = require('../db/models/Comment')
+const {Message} = require('../db/models/Message')
+const {Referance} = require('../db/models/Reference')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('path');
@@ -63,6 +66,25 @@ const resolvers = {
       const post = await Post.findByPk(id);
       return post;
     },
+    comments: async (parent, args, context) => {
+      console.log(args)
+      const comments = await Comment.findAll();
+      return comments;
+    },
+    comment: async (parent, args) => {
+      const id = args.id;
+      const comment = await Comment.findByPk(id);
+      return comment;
+    },
+    messages: async (parent, args) => {
+      const messages = await Message.findAll();
+      return messages;
+    },
+    message: async (parent, args) => {
+      const id = args.id;
+      const message = await Message.findByPk(id);
+      return message;
+    },
   },
   Upload: GraphQLUpload,
   Date: dateScalar,
@@ -97,15 +119,25 @@ const resolvers = {
         title: title || post.title,
         content: content || post.content,
         image: image || post.image,
-        subject: subject || post.subject
-
+        subject: subject || post.subject,
       });
       await post.save();
       return post;
     },
+    updateMessage: async (parent, args) => {
+      const {id, read} = args.input
+      const message = await Message.findByPk(id)
+
+      message.set({
+        content: message.content,
+        email: message.email,
+        read: read
+      })
+      await message.save()
+      return message
+    },
     login: async (parent, args, context) => {
       try {
-       
         const user = await User.findOne({ where: { username: args.username } });
 
         if (!user) {
@@ -151,6 +183,24 @@ const resolvers = {
       };
       //https://brennanskinner.herokuapp.com/blogimages/${randomName}
     },
+    createMessage: async(parent, args, context) => {
+      try {
+
+        const message = await Message.create({...args.input})
+        return message
+      } catch (error) {
+        console.error('error occured in resolvers createMessage', error)
+      }
+    },
+    createComment: async (parent, args, context) => {
+      try {
+        const comment = await Comment.create({...args.input})
+        return comment
+      } catch (error) {
+        console.error('error occured in creating a comment', error)
+      }
+    },
+
   },
 };
 

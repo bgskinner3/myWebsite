@@ -50,3 +50,32 @@ export const UPLOAD_FILE = gql`
     }
   }
 `;
+
+export const CREATE_MESSAGE_MUTATION = gql`
+  mutation createMessage($input: CreateMessageInput!) {
+    createMessage(input: $input) {
+      content
+      read
+      email
+    }
+  }
+`;
+
+export const CREATE_COMMENT_MUTATION = gql`
+  mutation createComment($input: CreateCommentInput!) {
+    createComment(input: $input) {
+      content
+      id
+    }
+  }
+`;
+
+
+export const UPDATE_MESSAGE_MUTATION = gql`
+  mutation updateMessage($input: UpdateMessageInput!) {
+    updateMessage(input: $input) {
+      id
+      read
+    }
+  }
+`;

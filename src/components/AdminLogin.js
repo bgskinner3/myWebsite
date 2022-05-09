@@ -35,9 +35,9 @@ const AdminLogin = () => {
   
   return (
     <div>
-      <div className="w-full  h-full flex justify-center items-center">
+      <div className="w-full  h-screen flex justify-center items-center">
         <div className="relative z-0">
-          <img src={pic3} alt="" className="w-screen object-cover opacity-40" />
+          <img src={pic3} alt="" className="w-screen object-cover opacity-40 h-screen" />
           <div className="absolute inset-0 flex justify-center items-center z-10">
             <div className="container flex items-center justify-center flex-1 h-full mx-auto">
               <div className="w-full max-w-lg">
