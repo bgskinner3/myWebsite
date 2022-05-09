@@ -9,20 +9,18 @@ import {
   InMemoryCache,
   ApolloProvider,
   ApolloLink,
-  from
+  from,
 } from '@apollo/client';
 
 //replaces createhttplink to enable uploading to this file for my blog posts
 import { createUploadLink } from 'apollo-upload-client';
-
-
 
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
 
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers }) => {
     const token = localStorage.getItem(jwtAuth);
-   
+
     return {
       headers: {
         ...headers,
@@ -31,10 +29,9 @@ const authLink = new ApolloLink((operation, forward) => {
       },
     };
   });
- 
+
   return forward(operation);
 });
-
 
 const customFetch = (uri, options) => {
   return fetch(uri, options).then(async (response) => {
@@ -43,41 +40,33 @@ const customFetch = (uri, options) => {
         // or handle 400 errors
         return Promise.reject(response.status);
       }
-      
-      return response
-      
+
+      return response;
     } catch (error) {
-      console.error('big errr', error)
+      console.error('big errr', error);
     }
-    
   });
 };
-let link
-if(process.env.NODE_ENV === 'production') {
- console.log('production true')
+let link;
+if (process.env.NODE_ENV === 'production') {
   link = '/graphql';
 } else {
-  console.log('development true');
   link = 'http://localhost:4000/graphql';
 }
-
 
 const httpLink = createUploadLink({
   uri: link,
   fetch: customFetch,
 });
-console.log('here', httpLink)
-//for heroku build 
+
+//for heroku build
 //http://localhost:4000/graphql
 //https://brennanskinner.herokuapp.com/graphql
-console.log('here', httpLink)
-console.log('another', customFetch())
-// console.log('another build', reponseFix);
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([authLink, httpLink]),
 });
-
 
 ReactDOM.render(
   <BrowserRouter>

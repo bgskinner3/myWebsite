@@ -3,9 +3,9 @@ import { LOGIN_USER } from '../graphql/mutations';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import pic3 from '../images/pic3.jpg';
-import nycskylinetrain from '../images/nycskylinetrain.jpeg';
+import { toast } from 'react-toastify';
 const jwtAuth = process.env.REACT_APP_JWT_SECRET;
-const getUser = process.env.REACT_APP_USER;
+
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -29,6 +29,15 @@ const AdminLogin = () => {
       localStorage.setItem(jwtAuth, token);
       navigate('/');
     } catch (error) {
+      toast.error('Username and password are incorrect', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.error('in handlelogin', error);
     }
   };
@@ -78,7 +87,7 @@ const AdminLogin = () => {
                         type="submit"
                         className="py-2 px-4 btn glass bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                       >
-                        Validate
+                        Login
                       </button>
                     </div>
                   </form>

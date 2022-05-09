@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Loading from './Loading';
 import { GET_ALL_BLOG_POSTS } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -8,29 +8,15 @@ import profile from '../images/profile.jpg';
 import Button from '@mui/material/Button';
 import ArrowCircleDownTwoToneIcon from '@mui/icons-material/ArrowCircleDownTwoTone';
 import Projects from './Projects';
-import Resume from './Resume';
 import SwipeableMoblie from './SwipeableMoblie';
 
 const Home = () => {
-  const [recentPost, setRecentPost] = useState({});
+  
   const { data, loading } = useQuery(GET_ALL_BLOG_POSTS);
   const navigate = useNavigate();
-  const style = {
-    height: '600px',
-    backgroundImage: `url(${skylinefixed})`,
-    backgorundSize: 'contain',
-    backgroundPosition: 'center',
-  };
+  
 
-  useEffect(() => {
-    getRecent();
-  }, [data]);
-
-  const getRecent = () => {
-    if (data) {
-      setRecentPost(data.posts[0]);
-    }
-  };
+  
 
   return loading ? (
     <Loading />

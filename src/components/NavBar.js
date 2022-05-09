@@ -1,47 +1,48 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import Resume from './Resume';
 import nav from '../images/nav.png';
-import {GET_ALL_MESSAGES} from '../graphql/queries'
+import { GET_ALL_MESSAGES } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
 const token = process.env.REACT_APP_JWT_SECRET;
 
 const NavBar = () => {
   const admin = localStorage.getItem(token);
-  const [navMenuOpen, setNavMenuOpen] = useState(null)
-  const [style, setStyle] = useState({})
+  const [navMenuOpen, setNavMenuOpen] = useState(null);
+  const [style, setStyle] = useState({});
   const navigate = useNavigate();
-  const {data} = useQuery(GET_ALL_MESSAGES)
+  const { data, refetch } = useQuery(GET_ALL_MESSAGES);
 
   useEffect(() => {
-    getPing()
-  }, [data])
-
+    getPing();
+  }, [data]);
 
   const getPing = () => {
-    if(data) {
+    let arr = [];
+    if (data) {
       data.messages.map((message) => {
-        if(message.read === 'no') {
-          setStyle({
-            animation: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
-            backgroundColor: "rgb(56 189 248)"
-          });
-        } else {
-          setStyle({animation: "none"})
-        }
-      })
+        arr.push(message.read);
+      });
     }
-  }
-   const handleNavToggle = () => {
-     setNavMenuOpen(!navMenuOpen);
-   };
-  
+    if (arr.includes('no')) {
+      setStyle({
+        animation: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
+        backgroundColor: 'rgb(56 189 248)',
+      });
+    } else {
+      setStyle({ animation: 'none' });
+    }
+  };
+  const handleNavToggle = () => {
+    setNavMenuOpen(!navMenuOpen);
+  };
+
   return (
-    <header className="sticky top-0 p-5 flex justify-between items-center bg-white p-5 shadow-md md:px-10 z-40 ">
+    <header className="sticky pl-5 pr-5 top-0 flex justify-between items-center bg-white shadow-md md:px-10 z-40 ">
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box relative">
+        <div className="modal-box relative bg-white">
           <label
             htmlFor="my-modal-3"
             className="btn btn-sm btn-circle absolute right-2 top-2"
@@ -52,7 +53,7 @@ const NavBar = () => {
         </div>
       </div>
       <Link to="/" className="h-24">
-        <img src={nav} alt="" className="h-24 " />
+        <img src={nav} alt="" className="h-24" />
       </Link>
 
       {admin ? (
@@ -78,7 +79,7 @@ const NavBar = () => {
                   />
                 </svg>
                 <span
-                  className="absolute inline-flex h-full w-full rounded-full opacity-75"
+                  className="  absolute inline-flex h-full w-full rounded-full opacity-75"
                   style={style}
                 ></span>
               </div>
@@ -201,14 +202,18 @@ const NavBar = () => {
                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                   />
                 </svg>
+                <span
+                  className="absolute inline-flex h-full w-full rounded-full opacity-75"
+                  style={style}
+                ></span>
 
-                <span className="flex h-3 w-3">
+                {/* <span className="flex h-3 w-3">
                   <span
                     className="absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"
                     style={style}
                   ></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-                </span>
+                </span> */}
               </div>
             </button>
           </nav>
@@ -237,12 +242,12 @@ const NavBar = () => {
           >
             <label
               tabIndex="0"
-              className="btn m-1 bg-white hover:bg-white hover:border-indigo-400 border-white "
+              className="btn m-1 bg-base hover:bg-base hover:border-indigo-400 border-base "
             >
               {navMenuOpen ? (
                 <XIcon className="h-6" />
               ) : (
-                <MenuIcon className="h-6 bg-white" />
+                <MenuIcon className="h-6" />
               )}
             </label>
           </nav>

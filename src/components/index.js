@@ -9,6 +9,7 @@ import Projects from './Projects';
 import EditBlogPost from './EditBlogPost';
 import Message from './Message';
 import AdminMessages from './AdminMessages';
+import PageNotFound from './PageNotFound';
 export {
   Home,
   NavBar,
@@ -20,5 +21,6 @@ export {
   Projects,
   EditBlogPost,
   Message,
-  AdminMessages
+  AdminMessages,
+  PageNotFound
 };

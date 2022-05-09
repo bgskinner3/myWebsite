@@ -2,7 +2,7 @@ import React from "react";
 
 const Resume = () => {
   return (
-    <div>
+    <div className="text-black">
       <h1 className="text-2xl text-bold ">Brennan Skinner</h1>
       <p className="underline">Software Engineer</p>
       <div className="text-xs pb-5">

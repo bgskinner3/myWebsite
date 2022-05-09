@@ -15,7 +15,8 @@ import {
   Projects,
   EditBlogPost,
   Message,
-  AdminMessages
+  AdminMessages,
+  PageNotFound
   
 } from './components';
 
@@ -35,6 +36,7 @@ const Routing = () => {
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blog/:id" element={<SingleBlog />} />
           <Route exact path="/blog/:id/edit" element={<EditBlogPost />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />

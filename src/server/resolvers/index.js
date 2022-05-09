@@ -32,11 +32,11 @@ const dateScalar = new GraphQLScalarType({
     return value.getTime(); // Convert outgoing Date to integer for JSON
   },
   parseValue(value) {
-    console.log(value);
+   
     return new Date(value); // Convert incoming integer to Date
   },
   parseLiteral(ast) {
-    console.log(ast);
+    
     if (ast.kind === Kind.INT) {
       return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
     }
@@ -52,7 +52,7 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       const { id } = jwt.verify(args.token, process.env.REACT_APP_JWT_SECRET);
-      console.log(id);
+     
       const user = await User.findByPk(id);
       return user;
     },
@@ -67,7 +67,7 @@ const resolvers = {
       return post;
     },
     comments: async (parent, args, context) => {
-      console.log(args)
+  
       const comments = await Comment.findAll();
       return comments;
     },
