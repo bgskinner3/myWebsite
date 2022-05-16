@@ -1,6 +1,5 @@
 import React from "react";
 import pagenotfound from '../images/pagenotfound.jpeg'
-import pic3 from '../images/pic3.jpg'
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 

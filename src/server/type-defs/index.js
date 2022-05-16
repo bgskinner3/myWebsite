@@ -48,6 +48,7 @@ const typeDefs = gql`
     comment(id: ID!): Comment!
     referances: [Referance!]!
     referance(id: ID!): Referance!
+    
   }
   input UserInput {
     username: String!

@@ -1,5 +1,6 @@
 import React from 'react';
 import publicsquare from '../projectImages/publicsquare.png';
+import publicSquarelogo from '../projectImages/publicSquarelogo.png';
 import bodegswap from '../projectImages/bodegswap.png';
 import piepal from '../projectImages/piepal.png';
 import GetAppIcon from '@mui/icons-material/GetApp';
@@ -11,7 +12,7 @@ const Projects = () => {
       <div className="md:flex flex-grow border-t border-black hidden"></div>
       <div className="md:flex m-20 hidden">
         <figure className="w-3/4 m-5 shadow-xl">
-          <img src={publicsquare} alt="" className="h-full w-full" />
+          <img src={publicSquarelogo} alt="" className="h-full w-full" />
         </figure>
         <div className="card lg:card-side bg-base-100 shadow-xl shadow-black m-5 w-3/4">
           <div className="card-body">
@@ -48,16 +49,16 @@ const Projects = () => {
 
             <div className="card-actions justify-end">
               <div>
-                <a href="">
+                <a href="https://public-square.herokuapp.com/">
                   <GetAppIcon
                     sx={{ fontSize: 50 }}
                     className="hover:scale-110 hover:animate-bounce"
                   />
                 </a>
-                <p>Coming Soon</p>
+                <p>App</p>
               </div>
               <div>
-                <a href="">
+                <a href="https://github.com/bgskinner3/PublicSquare2">
                   <GitHubIcon
                     sx={{ fontSize: 50 }}
                     className="hover:scale-110 hover:animate-bounce"
@@ -117,7 +118,7 @@ const Projects = () => {
                     className="hover:scale-110 hover:animate-bounce"
                   />
                 </a>
-                <p>Heroku</p>
+                <p>App</p>
               </div>
               <div>
                 <a href="https://github.com/2201-GraceShopper-CharmanderChargers/Pie-Pal">
@@ -182,7 +183,7 @@ const Projects = () => {
                     className="hover:scale-110 hover:animate-bounce"
                   />
                 </a>
-                <p>Heroku</p>
+                <p>App</p>
               </div>
               <div>
                 <a href="https://github.com/FSA-Capstone-2201-Team-7/bodega-swap">
@@ -249,7 +250,7 @@ const Projects = () => {
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
-                    <p className="text-sm">Heroku</p>
+                    <p className="text-sm">App</p>
                   </div>
                   <div>
                     <a href="https://github.com/FSA-Capstone-2201-Team-7/bodega-swap">
@@ -317,7 +318,7 @@ const Projects = () => {
                         className="hover:scale-110 hover:animate-bounce"
                       />
                     </a>
-                    <p className="text-sm">Heroku</p>
+                    <p className="text-sm">App</p>
                   </div>
                   <div>
                     <a href="https://github.com/2201-GraceShopper-CharmanderChargers/Pie-Pal">
@@ -339,7 +340,7 @@ const Projects = () => {
           <input type="checkbox" />
           <div className="swap-off h-full w-full">
             <figure className="shadow-xl">
-              <img src={publicsquare} alt="" className="h-full w-full" />
+              <img src={publicSquarelogo} alt="" className="h-full w-full" />
             </figure>
           </div>
           <div className="swap-on">

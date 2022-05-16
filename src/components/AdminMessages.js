@@ -140,7 +140,7 @@ const AdminMessages = () => {
                                       })
                                     }
                                   >
-                                    open modal
+                                    View Message
                                   </label>
                                 </td>
                               </tr>
