@@ -6,6 +6,19 @@ const typeDefs = gql`
   type File {
     url: String!
   }
+  type ToDos {
+    completed: Boolean
+    content: String
+    importance: Importance
+    createdAt: Date
+  }
+  type Reactos {
+    question: String
+    markdownnumber: String
+    completed: Boolean
+    answer: String
+    title: String
+  }
   type Post {
     id: ID!
     content: String!
@@ -48,7 +61,10 @@ const typeDefs = gql`
     comment(id: ID!): Comment!
     referances: [Referance!]!
     referance(id: ID!): Referance!
-    
+    reacto(id: ID!): Reactos!
+    reactos: [Reactos]!
+    todo(id: ID!): ToDos
+    todos: [ToDos!]!
   }
   input UserInput {
     username: String!
@@ -93,6 +109,31 @@ const typeDefs = gql`
     id: ID!
     read: Read
   }
+  input CreateToDoInput {
+    content: String
+    importance: Importance
+  }
+  input UpdateToDoInput {
+    id: ID!
+    completed: Boolean
+    content: String
+    importance: Importance
+  }
+  input CreateReactoInput {
+    question: String
+    markdownnumber: String
+    completed: Boolean
+    answer: String
+    title: String
+  }
+  input UpdateReactoInput {
+    id: ID!
+    question: String
+    markdownnumber: String
+    completed: Boolean
+    answer: String
+    title: String
+  }
 
   type Mutation {
     createPost(input: CreatePostInput!): Post
@@ -104,11 +145,21 @@ const typeDefs = gql`
     createMessage(input: CreateMessageInput!): Message
     createReferance(input: CreateReferanceInput!): Referance
     updateMessage(input: UpdateMessageInput!): Message!
+    createReacto(input: CreateReactoInput!): Reactos
+    updateReacto(input: UpdateReactoInput!): Reactos!
+    createToDo(input: CreateToDoInput!): ToDos
+    updateToDo(input: UpdateToDoInput!): ToDos!
+    deleteToDo(id: ID!): ToDos
   }
   enum Read {
     no
     yes
     save
+  }
+  enum Importance {
+    urgent
+    taketime
+    moderate
   }
 `;
 

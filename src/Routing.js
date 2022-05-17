@@ -18,6 +18,8 @@ import {
   AdminMessages,
   PageNotFound,
   AdminCalanderAndToDos,
+  CreateReacto,
+  
 } from './components';
 
 
@@ -35,9 +37,10 @@ const Routing = () => {
           <Route exact path="/adminmessages" element={<AdminMessages />} />
           <Route
             exact
-            path="admincalanderandtodos"
+            path="/admincalanderandtodos"
             element={<AdminCalanderAndToDos />}
           />
+          <Route exact path="/admincalanderandtodos/createreacto" element={<CreateReacto />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blog/:id" element={<SingleBlog />} />
           <Route exact path="/blog/:id/edit" element={<EditBlogPost />} />

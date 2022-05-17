@@ -70,12 +70,53 @@ export const CREATE_COMMENT_MUTATION = gql`
   }
 `;
 
-
 export const UPDATE_MESSAGE_MUTATION = gql`
   mutation updateMessage($input: UpdateMessageInput!) {
     updateMessage(input: $input) {
       id
       read
+    }
+  }
+`;
+
+export const CREATE_REACTO_MUTATION = gql`
+  mutation createReacto($input: CreateReactoInput!) {
+    createReacto(input: $input) {
+      question
+      markdownnumber
+      completed
+      answer
+    }
+  }
+`;
+export const UPDATE_REACTO_MUTATION = gql`
+  mutation createReacto($input: UpdateReactoInput!) {
+    createReacto(input: $input) {
+      id
+      question
+      markdownnumber
+      completed
+      answer
+    }
+  }
+`;
+export const CREATE_TODO_MUTATION = gql`
+  mutation createReacto($input: CreateToDoInput!) {
+    createReacto(input: $input) {
+      completed
+      content
+      importance
+    }
+  }
+`;
+
+export const UPDATE_TODO_MUTATION = gql`
+  mutation createReacto($input: UpdateToDoInput!) {
+    createReacto(input: $input) {
+      id
+      completed
+      content
+      importance
     }
   }
 `;

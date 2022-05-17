@@ -11,7 +11,7 @@ import Message from './Message';
 import AdminMessages from './AdminMessages';
 import PageNotFound from './PageNotFound';
 import AdminCalanderAndToDos from './AdminCalander';
-
+import CreateReacto from './AdminCreateReacto';
 export {
   Home,
   NavBar,
@@ -26,4 +26,6 @@ export {
   AdminMessages,
   PageNotFound,
   AdminCalanderAndToDos,
+  CreateReacto,
+
 };

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 
-const ToDos = db.define('calander', {
+const ToDos = db.define('todos', {
   completed: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,

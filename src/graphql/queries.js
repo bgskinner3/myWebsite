@@ -45,3 +45,43 @@ export const GET_ALL_COMMENTS = gql`
     }
   }
 `;
+
+export const GET_ALL_REACTOS = gql`
+  query getAllReactos {
+    question
+    markdownnumber
+    completed
+    answer
+  }
+`;
+
+export const GET_SINGLE_REACTO = gql`
+  query getSingleReacto($id: ID!) {
+    reacto(id: $id) {
+      question
+      markdownnumber
+      completed
+      answer
+    }
+  }
+`;
+
+export const GET_ALL_TODOS = gql`
+  query getAllToDos {
+    completed
+    content
+    importance
+    createdAt
+  }
+`;
+
+export const GET_SINGLE_TODO = gql`
+  query getSingleToDo($id: ID!) {
+    todo(id: $id) {
+      completed
+      content
+      importance
+      createdAt
+    }
+  }
+`;

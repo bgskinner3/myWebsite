@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 const { Post } = require('../db/models/Post');
 const { User } = require('../db/models/User');
-const {Comment} = require('../db/models/Comment')
-const {Message} = require('../db/models/Message')
-const {Referance} = require('../db/models/Reference')
+const { Comment } = require('../db/models/Comment');
+const { Message } = require('../db/models/Message');
+const { Referance } = require('../db/models/Reference');
+const { Reactos } = require('../db/models/Reactos');
+const { ToDos } = require('../db/models/ToDos');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('path');
@@ -32,11 +34,9 @@ const dateScalar = new GraphQLScalarType({
     return value.getTime(); // Convert outgoing Date to integer for JSON
   },
   parseValue(value) {
-   
     return new Date(value); // Convert incoming integer to Date
   },
   parseLiteral(ast) {
-    
     if (ast.kind === Kind.INT) {
       return new Date(parseInt(ast.value, 10)); // Convert hard-coded AST string to integer and then to Date
     }
@@ -52,7 +52,7 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       const { id } = jwt.verify(args.token, process.env.REACT_APP_JWT_SECRET);
-     
+
       const user = await User.findByPk(id);
       return user;
     },
@@ -67,7 +67,6 @@ const resolvers = {
       return post;
     },
     comments: async (parent, args, context) => {
-  
       const comments = await Comment.findAll();
       return comments;
     },
@@ -84,6 +83,24 @@ const resolvers = {
       const id = args.id;
       const message = await Message.findByPk(id);
       return message;
+    },
+    reactos: async (parent, args) => {
+      const reactos = await Reactos.findAll();
+      return reactos;
+    },
+    reacto: async (parent, args) => {
+      const id = args.id;
+      const reacto = await Reactos.findByPk(id);
+      return reacto;
+    },
+    todos: async (parent, args) => {
+      const allToDos = await ToDos.findAll();
+      return allToDos;
+    },
+    todo: async (parent, args) => {
+      const id = args.id;
+      const todo = await ToDos.findByPk(id);
+      return todo;
     },
   },
   Upload: GraphQLUpload,
@@ -125,16 +142,16 @@ const resolvers = {
       return post;
     },
     updateMessage: async (parent, args) => {
-      const {id, read} = args.input
-      const message = await Message.findByPk(id)
+      const { id, read } = args.input;
+      const message = await Message.findByPk(id);
 
       message.set({
         content: message.content,
         email: message.email,
-        read: read
-      })
-      await message.save()
-      return message
+        read: read,
+      });
+      await message.save();
+      return message;
     },
     login: async (parent, args, context) => {
       try {
@@ -183,26 +200,78 @@ const resolvers = {
       };
       //https://brennanskinner.herokuapp.com/blogimages/${randomName}
     },
-    createMessage: async(parent, args, context) => {
+    createMessage: async (parent, args, context) => {
       try {
-
-        const message = await Message.create({...args.input})
-        return message
+        const message = await Message.create({ ...args.input });
+        return message;
       } catch (error) {
-        console.error('error occured in resolvers createMessage', error)
+        console.error('error occured in resolvers createMessage', error);
       }
     },
     createComment: async (parent, args, context) => {
       try {
-        const comment = await Comment.create({...args.input})
-        return comment
+        const comment = await Comment.create({ ...args.input });
+        return comment;
       } catch (error) {
-        console.error('error occured in creating a comment', error)
+        console.error('error occured in creating a comment', error);
       }
     },
+    createReacto: async (parent, args) => {
+      try {
+        const reacto = await Reactos.create({ ...args.input });
+        return reacto;
+      } catch (error) {
+        console.error('in resolvers', error);
+      }
+    },
+    updateReacto: async (parent, args) => {
+      try {
+        const { id, question, markdownnumber, completed, answer, title } = args.input;
+        const reacto = await Reactos.findByPk(id);
 
+        reacto.set({
+          question: question || reacto.question,
+          markdownnumber: markdownnumber || reacto.markdownnumber,
+          completed: completed || reacto.completed,
+          answer: answer || reacto.answer,
+          title: title || reacto.title
+        });
+        await reacto.save();
+        return reacto;
+      } catch (error) {
+        console.error('in resolvers', error);
+      }
+    },
+    createToDo: async (parent, args) => {
+      try {
+        const todo = await ToDos.create({ ...args.input });
+        return todo;
+      } catch (error) {
+        console.error('in resolvers', error);
+      }
+    },
+    updateToDo: async (parent, args) => {
+      try {
+        const { id, completed, content, importance } = args.input;
+        const singleToDo = await ToDos.findByPk(id);
+
+        singleToDo.set({
+          completed: completed || singleToDo.completed,
+          content: content || singleToDo.content,
+          importance: importance || singleToDo.importance,
+        });
+        await singleToDo.save();
+        return singleToDo;
+      } catch (error) {
+        console.error('in resolvers', error);
+      }
+    },
+    deleteToDo: async (parent, args) => {
+      const id = args.id;
+      const todo = await ToDos.findByPk(id);
+      await todo.destroy();
+    },
   },
 };
-
 
 module.exports = { resolvers };

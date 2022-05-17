@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 
-const Reactos = db.define('calander', {
+const Reactos = db.define('reactos', {
   question: {
     type: Sequelize.TEXT,
     allowNull: false,
@@ -28,6 +28,9 @@ const Reactos = db.define('calander', {
       notEmpty: true,
     },
   },
+  title: {
+    type: Sequelize.STRING
+  }
 });
 
 module.exports = { Reactos }
