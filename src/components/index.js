@@ -10,6 +10,8 @@ import EditBlogPost from './EditBlogPost';
 import Message from './Message';
 import AdminMessages from './AdminMessages';
 import PageNotFound from './PageNotFound';
+import AdminCalanderAndToDos from './AdminCalander';
+
 export {
   Home,
   NavBar,
@@ -22,5 +24,6 @@ export {
   EditBlogPost,
   Message,
   AdminMessages,
-  PageNotFound
+  PageNotFound,
+  AdminCalanderAndToDos,
 };

@@ -5,6 +5,12 @@ import Resume from './Resume';
 import nav from '../images/nav.png';
 import { GET_ALL_MESSAGES } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
+import BookIcon from '@mui/icons-material/Book';
+import ArticleIcon from '@mui/icons-material/Article';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import MessageIcon from '@mui/icons-material/Message';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 const token = process.env.REACT_APP_JWT_SECRET;
 
 const NavBar = () => {
@@ -107,7 +113,8 @@ const NavBar = () => {
                       data-mdb-ripple="true"
                       data-mdb-ripple-color="dark"
                     >
-                      Blog
+                      <BookIcon />
+                      <p className="text-sm">Blog</p>
                     </Link>
                   </li>
                   <li className="relative">
@@ -117,7 +124,8 @@ const NavBar = () => {
                       data-mdb-ripple="true"
                       data-mdb-ripple-color="dark"
                     >
-                      Resume
+                      <ArticleIcon />
+                      <p className="text-xs">Resume</p>
                     </label>
                   </li>
                   <li className="relative">
@@ -127,7 +135,19 @@ const NavBar = () => {
                       data-mdb-ripple="true"
                       data-mdb-ripple-color="dark"
                     >
-                      Create Post
+                      <PostAddIcon />
+                      <p className="text-xs">Create Post</p>
+                    </Link>
+                  </li>
+                  <li className="relative">
+                    <Link
+                      to="/admincalanderandtodos"
+                      className="flex items-center text-base py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-200 ease-in-out"
+                      data-mdb-ripple="true"
+                      data-mdb-ripple-color="dark"
+                    >
+                      <ListAltIcon />
+                      <p className="text-xs">Calander</p>
                     </Link>
                   </li>
                   <li className="relative">
@@ -140,7 +160,8 @@ const NavBar = () => {
                         navigate(`/`);
                       }}
                     >
-                      Logout
+                      <LogoutIcon />
+                      <p className="text-xs">Logout</p>
                     </div>
                   </li>
                 </ul>
@@ -154,7 +175,8 @@ const NavBar = () => {
               to="blog"
               className="hover:scale-110  hover:text-indigo-500  hover:transition duration-200 ease-out"
             >
-              Blog
+              <BookIcon />
+              <p className="text-xs">Blog</p>
             </Link>
             <label
               htmlFor="my-modal-3"
@@ -162,7 +184,8 @@ const NavBar = () => {
               data-mdb-ripple="true"
               data-mdb-ripple-color="dark"
             >
-              Resume
+              <ArticleIcon />
+              <p className="text-xs">Resume</p>
             </label>
             <Link
               to="/write"
@@ -170,7 +193,17 @@ const NavBar = () => {
               data-mdb-ripple="true"
               data-mdb-ripple-color="dark"
             >
-              Create Post
+              <PostAddIcon />
+              <p className="text-xs">Create Post</p>
+            </Link>
+            <Link
+              to="/admincalanderandtodos"
+              className="hover:scale-110  hover:text-indigo-500  hover:transition duration-200 ease-out"
+              data-mdb-ripple="true"
+              data-mdb-ripple-color="dark"
+            >
+              <ListAltIcon />
+              <p className="text-xs">To-Do's</p>
             </Link>
             <div
               className="hover:scale-110  hover:text-indigo-500  hover:transition duration-200 ease-out"
@@ -181,7 +214,8 @@ const NavBar = () => {
                 navigate(`/`);
               }}
             >
-              Logout
+              <LogoutIcon />
+              <p className="text-xs">Logout</p>
             </div>
             <button
               className="btn btn-ghost btn-circle"
@@ -206,14 +240,6 @@ const NavBar = () => {
                   className="absolute inline-flex h-full w-full rounded-full opacity-75"
                   style={style}
                 ></span>
-
-                {/* <span className="flex h-3 w-3">
-                  <span
-                    className="absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"
-                    style={style}
-                  ></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-                </span> */}
               </div>
             </button>
           </nav>
@@ -261,7 +287,8 @@ const NavBar = () => {
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="dark"
                   >
-                    Blog
+                    <BookIcon />
+                    <p className="text-xs">Blog</p>
                   </Link>
                 </li>
                 <li className="relative">
@@ -271,7 +298,8 @@ const NavBar = () => {
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="dark"
                   >
-                    Message
+                    <MessageIcon />
+                    <p className="text-xs"> Message</p>
                   </Link>
                 </li>
                 <li className="relative">
@@ -281,7 +309,8 @@ const NavBar = () => {
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="dark"
                   >
-                    Resume
+                    <ArticleIcon />
+                    <p className="text-xs">Resume</p>
                   </label>
                 </li>
               </ul>
@@ -294,13 +323,15 @@ const NavBar = () => {
               to="/blog"
               className="hover:scale-110  hover:text-indigo-500  hover:transition duration-200 ease-out"
             >
-              Blog
+              <BookIcon />
+              <p className="text-xs">Blog</p>
             </Link>
             <Link
               to="/message"
               className="hover:scale-110  hover:text-indigo-500  hover:transition duration-200 ease-out"
             >
-              Message
+              <MessageIcon />
+              <p className="text-xs"> Message</p>
             </Link>
             <label
               htmlFor="my-modal-3"
@@ -308,7 +339,8 @@ const NavBar = () => {
               data-mdb-ripple="true"
               data-mdb-ripple-color="dark"
             >
-              Resume
+              <ArticleIcon />
+              <p className="text-xs">Resume</p>
             </label>
           </nav>
         </div>
