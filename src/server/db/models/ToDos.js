@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 
-const CalanderAndToDos = db.define('calander', {
+const ToDos = db.define('calander', {
   completed: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
@@ -18,7 +18,6 @@ const CalanderAndToDos = db.define('calander', {
     type: Sequelize.ENUM('urgent', 'taketime', 'moderate'),
     defaultValue: 'moderate',
   },
-  
 });
 
-module.exports = { CalanderAndToDos };
+module.exports = { ToDos };
