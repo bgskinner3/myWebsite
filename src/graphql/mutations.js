@@ -86,6 +86,7 @@ export const CREATE_REACTO_MUTATION = gql`
       markdownnumber
       completed
       answer
+      title
     }
   }
 `;

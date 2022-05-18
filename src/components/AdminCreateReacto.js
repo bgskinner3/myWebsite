@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { PageNotFound } from '.';
 import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 import {CREATE_REACTO_MUTATION} from '../graphql/mutations'
 const token = process.env.REACT_APP_JWT_SECRET;
 
@@ -10,6 +11,7 @@ const CreateReacto = () => {
   const [title, setTitle] = useState('')
   const [answer, setAnswer] = useState('')
   const [createReacto] = useMutation(CREATE_REACTO_MUTATION)
+  const navigate = useNavigate()
   const admin = localStorage.getItem(token);
 
   const handleReactoSubmit = async () => {
@@ -20,11 +22,14 @@ const CreateReacto = () => {
           input: {
             question: question,
             markdownnumber: markdownnumber,
-            answer: answer
+            answer: answer,
+            title: title
           },
         },
       });
-      console.log(data)
+      if(data) {
+        navigate('/admincalanderandtodos');
+      }
     } catch (error) {
       console.error('reacto didnt go through', error)
     }

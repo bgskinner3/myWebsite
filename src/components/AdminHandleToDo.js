@@ -3,7 +3,7 @@ import Loading from './Loading';
 import CountDown from './CountDown';
 import { useMutation } from '@apollo/client';
 import {UPDATE_TODO_MUTATION} from '../graphql/mutations'
-
+import { toast } from 'react-toastify';
 
 const ToDoHandle = (props) => {
   const [notCompleted, setNotCompleted] = useState([]);
@@ -33,21 +33,31 @@ const ToDoHandle = (props) => {
 
   const handleComplete = async () => {
     try {
-      console.log('complete', todoId);
-      // const { data } = await updateToDo({
-      //   variables: {
-      //     input: {
-      //       id: 
-      //       completed:
-      //     },
-      //   },
-      // });
+      
+      const { data } = await updateToDo({
+        variables: {
+          input: {
+            id: todoId, 
+            completed: true
+          },
+        },
+      });
+      if(data) {
+        toast.success('🦄  You Have Completed This Task!', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
       
     } catch (error) {
       console.error(error)
     }
   };
-console.log(todoId)
   return loading && notCompleted ? (
     <Loading />
   ) : (
@@ -96,11 +106,10 @@ console.log(todoId)
               <label
                 htmlFor="my-modal-6"
                 className="modal-button "
-                onChange={() => setToDoId(id)}
+                onClick={() => setToDoId(todo.id)}
               >
                 <div>
                   <p>DUE</p>
-
                   <CountDown targetDate={countdown} />
                 </div>
                 <div className="flex-grow border-t border-black pt-3 pb-3"></div>

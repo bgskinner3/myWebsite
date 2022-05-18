@@ -17,7 +17,7 @@ const Projects = () => {
         <div className="card lg:card-side bg-base-100 shadow-xl shadow-black m-5 w-3/4">
           <div className="card-body grid">
             <div className="grid">
-              <h2 className="card-title text-bold text-2xl">Public Sqaure</h2>
+              <h2 className="card-title text-bold text-2xl">Public Square</h2>
               <p className="text-left font-serif">
                 Public Sqaure, while still in development, aims to be a News
                 verfication platform. Through community activity and voting,
@@ -365,7 +365,7 @@ const Projects = () => {
               <div className="card-body">
                 <div className="grid">
                   <h2 className="card-title text-xs underline">
-                    Public Sqaure
+                    Public Square
                   </h2>
                   <p className="text-left font-serif text-xs">
                     Public Sqaure, while still in development, aims to be a News
@@ -399,7 +399,7 @@ const Projects = () => {
 
                 <div className="card-actions justify-end">
                   <div>
-                    <a href="">
+                    <a href="https://public-square.herokuapp.com/">
                       <GetAppIcon
                         sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
@@ -408,7 +408,7 @@ const Projects = () => {
                     <p className="text-sm">Coming Soon</p>
                   </div>
                   <div>
-                    <a href="">
+                    <a href="https://github.com/bgskinner3/PublicSquare2">
                       <GitHubIcon
                         sx={{ fontSize: 30 }}
                         className="hover:scale-110 hover:animate-bounce"
