@@ -95,6 +95,7 @@ const resolvers = {
     },
     todos: async (parent, args) => {
       const allToDos = await ToDos.findAll();
+      console.log('success!', allToDos);
       return allToDos;
     },
     todo: async (parent, args) => {
@@ -244,6 +245,7 @@ const resolvers = {
     },
     createToDo: async (parent, args) => {
       try {
+        console.log(args)
         const todo = await ToDos.create({ ...args.input });
         return todo;
       } catch (error) {

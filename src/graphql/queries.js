@@ -67,11 +67,13 @@ export const GET_SINGLE_REACTO = gql`
 `;
 
 export const GET_ALL_TODOS = gql`
-  query getAllToDos {
-    completed
-    content
-    importance
-    createdAt
+  query getAllTodos {
+    todos {
+      completed
+      content
+      importance
+      createdAt
+    }
   }
 `;
 

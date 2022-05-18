@@ -15,9 +15,9 @@ const Projects = () => {
           <img src={publicSquarelogo} alt="" className="h-full w-full" />
         </figure>
         <div className="card lg:card-side bg-base-100 shadow-xl shadow-black m-5 w-3/4">
-          <div className="card-body">
+          <div className="card-body grid">
             <div className="grid">
-              <h2 className="card-title">Public Sqaure</h2>
+              <h2 className="card-title text-bold text-2xl">Public Sqaure</h2>
               <p className="text-left font-serif">
                 Public Sqaure, while still in development, aims to be a News
                 verfication platform. Through community activity and voting,
@@ -29,25 +29,31 @@ const Projects = () => {
             </div>
             <div className="flex justify-between">
               <div className="grid grid-cols-1">
-                <h2 className="card-title">Tech Stack* TBA</h2>
-                <p className="grid text-left">
+                <h2 className="card-title text-center text-bold text-2xl">
+                  Tech
+                </h2>
+                <p className="grid text-left text-bold">
                   <li>GraphQL</li>
                   <li>React</li>
                   <li>Postgres</li>
                 </p>
               </div>
               <div className="grid grid-cols-1">
-                <p className="text-center text-bold text-2xl">
+                <p className="card-title text-center text-bold text-2xl">
                   Project Duration
                 </p>
                 <p>May 1 2022 - Currently in progess</p>
 
-                <p className="text-center text-bold text-2xl">Team Members</p>
-                <p>Brennan Skinner</p>
+                <p className="card-title text-center text-bold text-2xl">
+                  Team Members
+                </p>
+                <p className="grid text-left text-bold">
+                  <li>Brennan Skinner</li>
+                </p>
               </div>
             </div>
 
-            <div className="card-actions justify-end">
+            <div className="card-actions justify-evenly pt-10">
               <div>
                 <a href="https://public-square.herokuapp.com/">
                   <GetAppIcon
@@ -75,9 +81,9 @@ const Projects = () => {
 
       <div className="md:flex m-20 hidden">
         <div className="card lg:card-side bg-base-100 shadow-xl shadow-black  m-5 w-3/4">
-          <div className="card-body">
+          <div className="card-body grid">
             <div className="grid">
-              <h2 className="card-title">Pie-Pal</h2>
+              <h2 className="card-title text-bold text-2xl">Pie-Pal</h2>
               <p className="text-left font-serif">
                 Pie-Pal is a ecommerce application providing consumers the
                 ability to purchase pizza from anywhere in country. While there
@@ -86,31 +92,34 @@ const Projects = () => {
               </p>
             </div>
             <div className="flex justify-between">
-              <div className="grid grid-cols-1 ">
-                <h2 className="card-title">Tech Stack</h2>
-                <p className="grid text-left">
-                  <li>React/Redux</li>
+              <div className="grid grid-cols-1">
+                <h2 className="card-title text-center text-bold text-2xl">
+                  Tech
+                </h2>
+                <p className="grid text-left text-bold">
+                  <li>React</li>
                   <li>Postgres</li>
                   <li>Express</li>
                 </p>
               </div>
-              <div className="grid">
-                <div className="justify-between">
-                  <h2 className="text-center text-bold text-2xl">
-                    Project Duration
-                  </h2>
-                  <p>February 28 2022 - March 14 2022</p>
-                </div>
-                <div>
-                  <h2 className="text-center text-bold text-2xl">
-                    Team Members
-                  </h2>
-                  <p>David Durnham, Ryan Heaux, Brennan Skinner</p>
-                </div>
+              <div className="grid grid-cols-1">
+                <h2 className="card-title text-center text-bold text-2xl">
+                  Project Duration
+                </h2>
+                <p>February 28 2022 - March 14 2022</p>
+
+                <h2 className="card-title text-center text-bold text-2xl">
+                  Team Members
+                </h2>
+                <p className="grid text-left text-bold">
+                  <li>David Durnham</li>
+                  <li>Ryan Heaux</li>
+                  <li>Brennan Skinner</li>
+                </p>
               </div>
             </div>
 
-            <div className="flex justify-end">
+            <div className="card-actions justify-evenly pt-10">
               <div>
                 <a href="https://pie-pal.herokuapp.com/">
                   <GetAppIcon
@@ -144,9 +153,9 @@ const Projects = () => {
           <img src={bodegswap} alt="" className="h-full w-full" />
         </figure>
         <div className="card lg:card-side bg-base-100 shadow-xl shadow-black  m-5 w-3/4">
-          <div className="card-body">
+          <div className="card-body grid">
             <div className="grid">
-              <h2 className="card-title">Bodega Swap</h2>
+              <h2 className="card-title text-bold text-2xl">Bodega Swap</h2>
               <p className="text-left font-serif">
                 Bodega Swap is a platform that allows users to trade their
                 'trash' for some else's 'treasures'. Connect with other users
@@ -157,25 +166,33 @@ const Projects = () => {
             </div>
             <div className="flex justify-between">
               <div className="grid grid-cols-1">
-                <h2 className="card-title">Tech Stack</h2>
-                <p className="grid text-left">
+                <h2 className="card-title text-center text-bold text-2xl">
+                  Tech
+                </h2>
+                <p className="grid text-left text-bold">
                   <li>React</li>
                   <li>Tailwind</li>
                   <li>Supabase</li>
                 </p>
               </div>
               <div className="grid grid-cols-1">
-                <p className="text-center text-bold text-2xl">
+                <p className="card-title text-center text-bold text-2xl">
                   Project Duration
                 </p>
                 <p>March 15 2022 - April 5 2022</p>
 
-                <p className="text-center text-bold text-2xl">Team Members</p>
-                <p>Colin Forbes, Kaitlyn Zou, Brennan Skinner</p>
+                <p className="card-title text-center text-bold text-2xl">
+                  Team Members
+                </p>
+                <p className="grid text-left text-bold">
+                  <li>Colin Forbes</li>
+                  <li>Kaitlyn Zou</li>
+                  <li>Brennan Skinner</li>
+                </p>
               </div>
             </div>
 
-            <div className="card-actions justify-end">
+            <div className="card-actions justify-evenly pt-10">
               <div>
                 <a href="https://bodega-swap.herokuapp.com">
                   <GetAppIcon

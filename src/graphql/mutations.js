@@ -101,8 +101,8 @@ export const UPDATE_REACTO_MUTATION = gql`
   }
 `;
 export const CREATE_TODO_MUTATION = gql`
-  mutation createReacto($input: CreateToDoInput!) {
-    createReacto(input: $input) {
+  mutation createToDo($input: CreateToDoInput!) {
+    createToDo(input: $input) {
       completed
       content
       importance
@@ -111,8 +111,8 @@ export const CREATE_TODO_MUTATION = gql`
 `;
 
 export const UPDATE_TODO_MUTATION = gql`
-  mutation createReacto($input: UpdateToDoInput!) {
-    createReacto(input: $input) {
+  mutation updateToDo($input: UpdateToDoInput!) {
+    updateToDo(input: $input) {
       id
       completed
       content

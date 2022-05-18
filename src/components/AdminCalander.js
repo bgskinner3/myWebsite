@@ -4,8 +4,9 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_TODO_MUTATION } from '../graphql/mutations';
-
+import { toast } from 'react-toastify';
 import { PageNotFound } from '.';
+import ToDoHandle from './AdminHandleToDo';
 
 const token = process.env.REACT_APP_JWT_SECRET;
 
@@ -25,14 +26,26 @@ const AdminCalanderAndToDos = () => {
         variables: {
           input: {
             content: content,
-            importance: importance
+            importance: importance.create
           }
         }
       })
+      if(data) {
+          toast.success('🦄  You Have a new TO-DO', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+      }
     } catch (error) {
       console.error('did not create todo', error);
     }
   };
+ 
   return admin ? (
     <div className="bg-white pt-20 pb-20">
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />
@@ -45,7 +58,9 @@ const AdminCalanderAndToDos = () => {
             ✕
           </label>
           <div>
-            <p className="text-2xl">{importance.display}</p>
+            <p className="text-2xl font-serif text-bold text-black">
+              {importance.display}
+            </p>
           </div>
           <div className="flex justify-evenly mb-5 mt-5">
             <button
@@ -91,12 +106,13 @@ const AdminCalanderAndToDos = () => {
               onChange={(e) => setContent(e.target.value)}
             ></textarea>
           </div>
-          <button
+          <label
+            htmlFor="my-modal-5"
             className="btn btn-active mt-10"
             onClick={() => handleCreateToDo()}
           >
             Add To Do
-          </button>
+          </label>
         </div>
       </div>
       <div className="p-5 ml-10 border-4 bg-primary-content rounded-3xl border-neutral-content  shadow-2xl shadow-black w-96 h-screen inset-y-0 left-0 bg-white">
@@ -125,6 +141,7 @@ const AdminCalanderAndToDos = () => {
           </div>
         </div>
         <div>this weeks todos?</div>
+        <ToDoHandle />
       </div>
     </div>
   ) : (
