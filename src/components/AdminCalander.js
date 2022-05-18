@@ -7,7 +7,8 @@ import { CREATE_TODO_MUTATION } from '../graphql/mutations';
 import { toast } from 'react-toastify';
 import { PageNotFound } from '.';
 import ToDoHandle from './AdminHandleToDo';
-
+import { useQuery } from '@apollo/client';
+import { GET_ALL_TODOS } from '../graphql/queries';
 const token = process.env.REACT_APP_JWT_SECRET;
 
 const AdminCalanderAndToDos = () => {
@@ -18,6 +19,7 @@ const AdminCalanderAndToDos = () => {
   });
   const [createToDo] = useMutation(CREATE_TODO_MUTATION);
   const navigate = useNavigate();
+    const { data, loading, refetch } = useQuery(GET_ALL_TODOS);
   const admin = localStorage.getItem(token);
 
   const handleCreateToDo = async () => {
@@ -115,7 +117,7 @@ const AdminCalanderAndToDos = () => {
           </label>
         </div>
       </div>
-      <div className="p-5 ml-10 border-4 bg-primary-content rounded-3xl border-neutral-content  shadow-2xl shadow-black w-96 h-screen inset-y-0 left-0 bg-white">
+      <div className="p-5 md:ml-10 border-4 bg-primary-content rounded-3xl border-neutral-content  shadow-2xl shadow-black md:w-96 h-screen inset-y-0 left-0 bg-white overflow-y-auto">
         <div className="flex justify-center justify-evenly">
           <label
             htmlFor="my-modal-5"
@@ -141,7 +143,9 @@ const AdminCalanderAndToDos = () => {
           </div>
         </div>
         <div>this weeks todos?</div>
-        <ToDoHandle />
+        <div className="overflow-auto">
+          <ToDoHandle data={data} loading={loading} />
+        </div>
       </div>
     </div>
   ) : (
