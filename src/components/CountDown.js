@@ -17,36 +17,32 @@ const CountDown = (props) => {
     '--value': seconds,
   };
   return (
-    <span class="countdown font-mono text-2xl">
-      <span style={countDays}></span>d<span style={countHours}></span>h
-      <span style={countMin}></span>m<span style={countSec}></span>s
-    </span>
-    // <div className="flex gap-5">
-    //   <div>
-    //     <span className="countdown font-mono text-xl">
-    //       <span style={countDays}></span>
-    //     </span>
-    //     days
-    //   </div>
-    //   <div>
-    //     <span className="countdown font-mono text-xl">
-    //       <span style={countHours}></span>
-    //     </span>
-    //     hours
-    //   </div>
-    //   <div>
-    //     <span className="countdown font-mono text-xl">
-    //       <span style={countMin}></span>
-    //     </span>
-    //     min
-    //   </div>
-    //   <div>
-    //     <span className="countdown font-mono text-xl">
-    //       <span style={countSec}></span>
-    //     </span>
-    //     sec
-    //   </div>
-    // </div>
+    <div className="flex gap-5">
+    <div>
+      <span className="countdown font-mono text-xl">
+        <span style={countDays}></span>
+      </span>
+      days
+    </div>
+      <div>
+        <span className="countdown font-mono text-xl">
+          <span style={countHours}></span>
+        </span>
+        hours
+      </div>
+      <div>
+        <span className="countdown font-mono text-xl">
+          <span style={countMin}></span>
+        </span>
+        min
+      </div>
+      <div>
+        <span className="countdown font-mono text-xl">
+          <span style={countSec}></span>
+        </span>
+        sec
+      </div>
+    </div>
   );
 };
 

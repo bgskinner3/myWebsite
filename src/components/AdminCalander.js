@@ -33,6 +33,7 @@ const AdminCalanderAndToDos = () => {
         }
       })
       if(data) {
+        refetch()
           toast.success('🦄  You Have a new TO-DO', {
             position: 'top-center',
             autoClose: 3000,
@@ -118,7 +119,7 @@ const AdminCalanderAndToDos = () => {
         </div>
       </div>
       <div className="p-5 md:ml-10 border-4 bg-primary-content rounded-3xl border-neutral-content  shadow-2xl shadow-black md:w-96 h-screen inset-y-0 left-0 bg-white overflow-y-auto">
-        <div className="flex justify-center justify-evenly">
+        <div className="flex justify-center justify-evenly pb-10">
           <label
             htmlFor="my-modal-5"
             className="flex justify-center text-neutral-content overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-200 ease-in-out"
@@ -142,10 +143,8 @@ const AdminCalanderAndToDos = () => {
             </div>
           </div>
         </div>
-        <div>this weeks todos?</div>
-        <div className="overflow-auto">
-          <ToDoHandle data={data} loading={loading} />
-        </div>
+        <div className="flex-grow border-t border-black pb-10"></div>
+        <ToDoHandle data={data} loading={loading} />
       </div>
     </div>
   ) : (

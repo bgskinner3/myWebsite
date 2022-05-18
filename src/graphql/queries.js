@@ -69,6 +69,7 @@ export const GET_SINGLE_REACTO = gql`
 export const GET_ALL_TODOS = gql`
   query getAllTodos {
     todos {
+    id
       completed
       content
       importance

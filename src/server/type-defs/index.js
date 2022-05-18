@@ -7,6 +7,7 @@ const typeDefs = gql`
     url: String!
   }
   type ToDos {
+    id: ID
     completed: Boolean
     content: String
     importance: Importance
