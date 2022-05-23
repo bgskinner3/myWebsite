@@ -92,6 +92,7 @@ export const GET_SINGLE_TODO = gql`
 export const GET_ALL_CARDS = gql`
   query getAllCards {
     cards {
+      id
       title
       description
       field
