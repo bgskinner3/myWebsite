@@ -51,6 +51,12 @@ const typeDefs = gql`
     username: String!
     password: String
   }
+  type Cards {
+    id: ID
+    title: String
+    description: String
+    field: Field
+  }
   type Query {
     posts: [Post!]!
     post(id: ID!): Post!
@@ -66,6 +72,8 @@ const typeDefs = gql`
     reactos: [Reactos]!
     todo(id: ID!): ToDos
     todos: [ToDos!]!
+    cards: [Cards!]!
+    card(id: ID!): Cards
   }
   input UserInput {
     username: String!
@@ -135,6 +143,17 @@ const typeDefs = gql`
     answer: String
     title: String
   }
+  input CreateCardInput {
+    title: String
+    description: String
+    field: Field
+  }
+  input UpdateCardInput {
+    id: ID!
+    title: String
+    description: String
+    field: Field
+  }
 
   type Mutation {
     createPost(input: CreatePostInput!): Post
@@ -151,6 +170,9 @@ const typeDefs = gql`
     createToDo(input: CreateToDoInput!): ToDos
     updateToDo(input: UpdateToDoInput!): ToDos!
     deleteToDo(id: ID!): ToDos
+    createCard(input: CreateCardInput!): Cards
+    updateCard(input: UpdateCardInput): Cards!
+    deleteCard(id: ID!): Cards
   }
   enum Read {
     no
@@ -161,6 +183,11 @@ const typeDefs = gql`
     urgent
     taketime
     moderate
+  }
+  enum Field {
+    bar
+    datascience
+    general
   }
 `;
 

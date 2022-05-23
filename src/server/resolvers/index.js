@@ -6,6 +6,7 @@ const { Message } = require('../db/models/Message');
 const { Referance } = require('../db/models/Reference');
 const { Reactos } = require('../db/models/Reactos');
 const { ToDos } = require('../db/models/ToDos');
+const { Cards } = require('../db/models/Cards');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('path');
@@ -95,13 +96,22 @@ const resolvers = {
     },
     todos: async (parent, args) => {
       const allToDos = await ToDos.findAll();
-      console.log('success!', allToDos);
+
       return allToDos;
     },
     todo: async (parent, args) => {
       const id = args.id;
       const todo = await ToDos.findByPk(id);
       return todo;
+    },
+    cards: async (parent, args) => {
+      const allCards = await Cards.findAll();
+      return allCards;
+    },
+    card: async (parent, args) => {
+      const id = args.id;
+      const card = Cards.findByPk(id);
+      return card;
     },
   },
   Upload: GraphQLUpload,
@@ -227,7 +237,8 @@ const resolvers = {
     },
     updateReacto: async (parent, args) => {
       try {
-        const { id, question, markdownnumber, completed, answer, title } = args.input;
+        const { id, question, markdownnumber, completed, answer, title } =
+          args.input;
         const reacto = await Reactos.findByPk(id);
 
         reacto.set({
@@ -235,7 +246,7 @@ const resolvers = {
           markdownnumber: markdownnumber || reacto.markdownnumber,
           completed: completed || reacto.completed,
           answer: answer || reacto.answer,
-          title: title || reacto.title
+          title: title || reacto.title,
         });
         await reacto.save();
         return reacto;
@@ -245,7 +256,6 @@ const resolvers = {
     },
     createToDo: async (parent, args) => {
       try {
-        console.log(args)
         const todo = await ToDos.create({ ...args.input });
         return todo;
       } catch (error) {
@@ -272,6 +282,14 @@ const resolvers = {
       const id = args.id;
       const todo = await ToDos.findByPk(id);
       await todo.destroy();
+    },
+    createCard: async (parent, args) => {
+      try {
+        const newCards = await Cards.create({ ...args.input });
+        return newCards;
+      } catch (error) {
+        console.error('did not create in server', error);
+      }
     },
   },
 };

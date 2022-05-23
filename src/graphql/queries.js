@@ -69,7 +69,7 @@ export const GET_SINGLE_REACTO = gql`
 export const GET_ALL_TODOS = gql`
   query getAllTodos {
     todos {
-    id
+      id
       completed
       content
       importance
@@ -85,6 +85,16 @@ export const GET_SINGLE_TODO = gql`
       content
       importance
       createdAt
+    }
+  }
+`;
+
+export const GET_ALL_CARDS = gql`
+  query getAllCards {
+    cards {
+      title
+      description
+      field
     }
   }
 `;

@@ -6,6 +6,8 @@ const {Comment} = require('./models/Comment');
 const {Referance} = require('./models/Reference');
 const { Reactos } = require('./models/Reactos')
 const {ToDos} = require('./models/ToDos')
+const {Cards} = require('./models/Cards')
+
 Post.hasMany(Comment)
 Comment.belongsTo(Post)
 
@@ -22,5 +24,6 @@ module.exports = {
   Comment,
   User,
   Reactos,
-  ToDos
+  ToDos,
+  Cards
 };

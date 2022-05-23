@@ -121,3 +121,25 @@ export const UPDATE_TODO_MUTATION = gql`
     }
   }
 `;
+
+export const CREATE_CARD_MUTATION = gql`
+  mutation createCard($input: CreateCardInput!) {
+    createCard(input: $input) {
+      title
+      description
+      field
+    }
+  }
+`;
+
+
+//check the inputs in the server 
+export const DELETE_CARD_MUTATION = gql`
+  mutation deleteCard($input: ID!) {
+    deleteCard(id: $input) {
+      id
+    }
+  }
+`;
+
+

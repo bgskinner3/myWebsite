@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+
+import SchoolIcon from '@mui/icons-material/School';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_TODO_MUTATION } from '../graphql/mutations';
@@ -127,7 +129,7 @@ const AdminCalanderAndToDos = () => {
             data-mdb-ripple-color="dark"
           >
             <div>
-              <PlaylistAddIcon sx={{ fontSize: 100 }} />
+              <NoteAddIcon sx={{ fontSize: 100 }} />
               <p className="text-lg">create todo</p>
             </div>
           </label>
@@ -140,6 +142,17 @@ const AdminCalanderAndToDos = () => {
             <div>
               <AddBoxIcon sx={{ fontSize: 100 }} />
               <p className="text-lg">create reacto</p>
+            </div>
+          </div>
+          <div
+            className="flex justify-center text-neutral-content overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-200 ease-in-out"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="dark"
+            onClick={() => navigate('/cards')}
+          >
+            <div>
+              <SchoolIcon sx={{ fontSize: 100 }} />
+              <p className="text-lg">cards</p>
             </div>
           </div>
         </div>

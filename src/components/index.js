@@ -12,6 +12,7 @@ import AdminMessages from './AdminMessages';
 import PageNotFound from './PageNotFound';
 import AdminCalanderAndToDos from './AdminCalander';
 import CreateReacto from './AdminCreateReacto';
+import CardPractice from './AdminCardPractice';
 export {
   Home,
   NavBar,
@@ -27,5 +28,5 @@ export {
   PageNotFound,
   AdminCalanderAndToDos,
   CreateReacto,
-
+  CardPractice
 };

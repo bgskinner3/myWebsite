@@ -19,7 +19,7 @@ import {
   PageNotFound,
   AdminCalanderAndToDos,
   CreateReacto,
-  
+  CardPractice,
 } from './components';
 
 
@@ -40,6 +40,7 @@ const Routing = () => {
             path="/admincalanderandtodos"
             element={<AdminCalanderAndToDos />}
           />
+          <Route exact path="/cards" element={<CardPractice />} />
           <Route exact path="/admincalanderandtodos/createreacto" element={<CreateReacto />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blog/:id" element={<SingleBlog />} />
