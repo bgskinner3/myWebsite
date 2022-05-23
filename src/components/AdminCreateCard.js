@@ -14,12 +14,13 @@ const CreateCard = (props) => {
 
   const handleCardSubmit = async () => {
     try {
+
       const { data } = await createCard({
         variables: {
           input: {
             title: title,
             description: description,
-            field: field,
+            field: field.toLowerCase().split(' ').join(''),
           },
         },
       });
