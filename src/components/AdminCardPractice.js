@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_CARDS } from '../graphql/queries';
 import CreateCard from './AdminCreateCard';
 import Loading from './Loading';
-
+import { useNavigate } from 'react-router-dom';
 const token = process.env.REACT_APP_JWT_SECRET;
 
 const CardPractice = () => {
@@ -13,7 +13,7 @@ const CardPractice = () => {
   const [fieldType, setFieldType] = useState('all');
   const { data, loading, refetch } = useQuery(GET_ALL_CARDS);
   const admin = localStorage.getItem(token);
-
+  const navigate = useNavigate()
   useEffect(() => {
     filterCategories();
     setFilterType()
@@ -43,7 +43,6 @@ const CardPractice = () => {
       if(fieldType !== "all") {
         data.cards.map((card) => {
           if(card.field === fieldType) {
-            console.log('mapping', card.field, fieldType);
             cardsArray.push(card)
           }
         })
@@ -56,8 +55,7 @@ const CardPractice = () => {
       console.error(error)
     }
   }
-console.log(displayCard);
-console.log('type', fieldType);
+
   return admin ? (
     loading ? (
       <Loading />
@@ -89,15 +87,21 @@ console.log('type', fieldType);
               <label key={card.id} className="swap swap-flip">
                 <input type="checkbox" />
                 <div className="swap-on">
-                  <div className="card lg:card-side bg-white shadow-xl shadow-black p-10">
-                    <div className=" text-left prose text-md text-black font-serif prose-slate max-w whitespace-pre-line">
+                  <div className="card md:w-96 h-96 overflow-scroll lg:card-side bg-white shadow-xl shadow-black p-10">
+                    <div className="text-left prose text-xs md:text-md text-black font-serif prose-slate max-w whitespace-pre-line">
                       {card.description}
                     </div>
                   </div>
                 </div>
                 <div className="swap-off">
-                  <div className="card lg:card-side bg-white shadow-xl shadow-black p-10">
+                  <div className="card md:w-96 h-96 overflow-scroll lg:card-side bg-white shadow-xl shadow-black p-10">
                     <div className="card-body text-black">{card.title}</div>
+                    <button
+                      className="btn btn-active"
+                      onClick={() => navigate(`/cards/${card.id}`)}
+                    >
+                      Edit
+                    </button>
                   </div>
                 </div>
               </label>

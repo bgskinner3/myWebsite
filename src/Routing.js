@@ -20,6 +20,7 @@ import {
   AdminCalanderAndToDos,
   CreateReacto,
   CardPractice,
+  EditCard
 } from './components';
 
 
@@ -41,6 +42,7 @@ const Routing = () => {
             element={<AdminCalanderAndToDos />}
           />
           <Route exact path="/cards" element={<CardPractice />} />
+          <Route exact path="/cards/:id" element={<EditCard />} />
           <Route exact path="/admincalanderandtodos/createreacto" element={<CreateReacto />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/blog/:id" element={<SingleBlog />} />

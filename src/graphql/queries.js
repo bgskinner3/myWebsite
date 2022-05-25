@@ -99,3 +99,14 @@ export const GET_ALL_CARDS = gql`
     }
   }
 `;
+
+export const GET_SINGLE_CARD = gql`
+  query card($id: ID!) {
+    card(id: $id) {
+      id
+      title
+      description
+      field
+    }
+  }
+`;

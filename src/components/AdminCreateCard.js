@@ -18,6 +18,7 @@ const CreateCard = (props) => {
       const { data } = await createCard({
         variables: {
           input: {
+            
             title: title,
             description: description,
             field: field.toLowerCase().split(' ').join(''),

@@ -291,6 +291,23 @@ const resolvers = {
         console.error('did not create in server', error);
       }
     },
+    updateCard: async (parent, args) => {
+      try {
+        const { id, title, description, field } = args.input;
+        const card = await Cards.findByPk(id)
+
+        card.set({
+          title: title || card.title,
+          description: description || card.description,
+          field: field || card.field
+        })
+
+        await card.save()
+        return card
+      } catch (error) {
+        console.error('did not update in server', error);
+      }
+    }
   },
 };
 

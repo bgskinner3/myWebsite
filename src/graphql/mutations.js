@@ -142,4 +142,14 @@ export const DELETE_CARD_MUTATION = gql`
   }
 `;
 
+export const UPDATE_CARD_MUTATION = gql`
+  mutation updateCard($input: UpdateCardInput!) {
+    updateCard(input: $input) {
+      id
+      title
+      description
+      field
+    }
+  }
+`;
 
