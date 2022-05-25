@@ -43,6 +43,7 @@ const CardPractice = () => {
       if(fieldType !== "all") {
         data.cards.map((card) => {
           if(card.field === fieldType) {
+
             cardsArray.push(card)
           }
         })
@@ -68,9 +69,7 @@ const CardPractice = () => {
           <ul
             tabindex="0"
             className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 w-full border-4 bg-primary-content rounded-3xl border-neutral-content shadow-2xl shadow-black "
-            onClick={
-              ((e) => setFilterType(e.target.innerHTML.toLowerCase()))
-            }
+            onClick={(e) => setFilterType(e.target.innerHTML.toLowerCase())}
           >
             {fieldFilter.map((type) => {
               return (
@@ -81,30 +80,32 @@ const CardPractice = () => {
             })}
           </ul>
         </div>
-        <div className="grid gap-10 p-10">
+        <div className="carousel rounded-box pt-10 pb-10">
           {displayCard.map((card) => {
             return (
-              <label key={card.id} className="swap swap-flip">
-                <input type="checkbox" />
-                <div className="swap-on">
-                  <div className="card md:w-96 h-96 overflow-scroll lg:card-side bg-white shadow-xl shadow-black p-10">
-                    <div className="text-left prose text-xs md:text-md text-black font-serif prose-slate max-w whitespace-pre-line">
-                      {card.description}
+            <div>
+                <label key={card.id} className="swap swap-flip w-screen pr-10 pl-10 ">
+                  <input type="checkbox" />
+                  <div className="swap-on">
+                    <div className="card md:w-96 h-96 overflow-scroll lg:card-side bg-white shadow-xl shadow-black p-10">
+                      <div className="text-left prose text-xs md:text-md text-black font-serif prose-slate max-w whitespace-pre-line">
+                        {card.description}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="swap-off">
-                  <div className="card md:w-96 h-96 overflow-scroll lg:card-side bg-white shadow-xl shadow-black p-10">
-                    <div className="card-body text-black">{card.title}</div>
-                    <button
-                      className="btn btn-active"
-                      onClick={() => navigate(`/cards/${card.id}`)}
-                    >
-                      Edit
-                    </button>
+                  <div className="swap-off">
+                    <div className="card md:w-96 h-96 overflow-scroll lg:card-side bg-white shadow-xl shadow-black p-10">
+                      <div className="card-body text-black">{card.title}</div>
+                      <button
+                        className="btn btn-active"
+                        onClick={() => navigate(`/cards/${card.id}`)}
+                      >
+                        Edit
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </label>
+                </label>
+             </div>
             );
           })}
         </div>
